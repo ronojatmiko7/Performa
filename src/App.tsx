@@ -342,7 +342,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                   <p className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-2">Pencapaian Kunci:</p>
                   <p className="text-sm text-gray-600">Memimpin proyek optimalisasi BPM dan strategis di grup Pertamina & United Tractors, memotong inefisiensi operasional secara terukur.</p>
                 </div>
-                <a href="#" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
+                <a href="#!" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
                   <LinkedinIcon /> LinkedIn Profile
                 </a>
               </div>
@@ -363,7 +363,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                   <p className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-2">Pencapaian Kunci:</p>
                   <p className="text-sm text-gray-600">Mendesain dan mengeksekusi sistem <i>Assessment Center</i> yang menekan angka turnover dan memastikan penempatan karyawan di PP Persero.</p>
                 </div>
-                <a href="#" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
+                <a href="#!" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
                   <LinkedinIcon /> LinkedIn Profile
                 </a>
               </div>
@@ -425,15 +425,15 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               <li><a href={insightsURL} className="hover:text-[#107dac] transition-colors">Case Studies</a></li>
               <li><a href={insightsURL} className="hover:text-[#107dac] transition-colors">Whitepapers</a></li>
               <li><a href={insightsURL} className="hover:text-[#107dac] transition-colors">Leadership Blog</a></li>
-              <li><a href="#" className="hover:text-[#107dac] transition-colors">Newsletter</a></li>
+              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Newsletter</a></li>
             </ul>
           </div>
           <div>
             <h4 className="text-gray-900 font-bold mb-6">Layanan</h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="#" className="hover:text-[#107dac] transition-colors">Arsitektur Proses</a></li>
-              <li><a href="#" className="hover:text-[#107dac] transition-colors">Penyusunan RJPP</a></li>
-              <li><a href="#" className="hover:text-[#107dac] transition-colors">Pengembangan SDM</a></li>
+              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Arsitektur Proses</a></li>
+              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Penyusunan RJPP</a></li>
+              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Pengembangan SDM</a></li>
             </ul>
           </div>
         </div>
