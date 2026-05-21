@@ -544,12 +544,12 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
     }
 
     setResult({
-      brand: diagnosisName,
-      track,
-      report: [findings[0], findings[1], findings[2], closing],
-      isUrgent,
-      description: `${severity}|${severityBg}|${diagnosisColor}`
-    });
+  brand: diagnosisName,
+  track,
+  report: [findings[0], findings[1], findings[2], closing],
+  isUrgent,
+  description: `${severity}|${severityBg}|${a.mainProblem}`
+});
 
     setTimeout(() => setStep(totalSteps + 1), 500);
   };
@@ -672,7 +672,7 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           )}
 
           {step === 6 && result && (() => {
-            const [severity, severityBg] = (result.description || '').split('|');
+            const [severity, severityBg, mainProblem] = (result.description || '').split('|');
             return (
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 animate-in zoom-in-95 duration-500 text-left">
                 <div className="py-6 px-8 bg-gray-900 border-b border-gray-800 flex justify-between items-center">
@@ -709,16 +709,45 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
                   </ul>
 
                   <div className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-6">
-                    <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">Fokus Intervensi yang Disarankan</p>
-                    <p className="text-blue-800 text-lg font-bold">{result.track}</p>
-                  </div>
+  <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">Fokus Intervensi yang Disarankan</p>
+  <p className="text-blue-800 text-lg font-bold mb-4">{result.track}</p>
+  <div className="border-t border-blue-200 pt-4">
+    <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-3">Dalam sesi diagnostik 60 menit, kita akan memetakan:</p>
+    <ul className="space-y-2">
+      {mainProblem === 'strategic' ? (
+        <>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya arah strategis Anda tidak selaras dengan kapabilitas organisasi</li>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah RJPP Anda realistis atau perlu direkonstruksi ulang</li>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Langkah konkret pertama yang bisa dieksekusi dalam 30-90 hari ke depan</li>
+        </>
+      ) : mainProblem === 'organizational' ? (
+        <>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya proses Anda bocor — apakah di struktur, SOP, KPI, atau job desc</li>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Siapa yang bertanggung jawab atas tiap bottleneck dan bagaimana membenahi akuntabilitasnya</li>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Estimasi waktu dan effort intervensi yang realistis untuk skala organisasi Anda</li>
+        </>
+      ) : (
+        <>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya gap kapabilitas kepemimpinan yang menghambat eksekusi tim</li>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah solusinya di level kompetensi, sistem, atau keduanya</li>
+          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Program intervensi yang paling efisien untuk skala dan urgensi organisasi Anda</li>
+        </>
+      )}
+    </ul>
+  </div>
+  <div className="mt-4 pt-4 border-t border-blue-200 flex items-center space-x-4">
+    <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> Gratis</span>
+    <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> Online via Zoom</span>
+    <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> 60 Menit</span>
+  </div>
+</div>
 
                   <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-8">
                     <p className="text-gray-700 text-sm leading-relaxed">{result.report[3]}</p>
                   </div>
 
                   <Button variant="solid" onClick={() => window.open('https://calendly.com/diagnosticcall/diagnostic', '_blank')}>
-                    Jadwalkan Sesi Diagnostik 60-Menit (Gratis) <ChevronRight className="w-5 h-5 ml-1" />
+                    Jadwalkan Sesi Diagnostik Online 60-Menit (Gratis) <ChevronRight className="w-5 h-5 ml-1" />
                   </Button>
                   <p className="text-xs text-center text-gray-400 mt-3">Sesi ini dirancang khusus untuk mendiskusikan temuan di atas dan memetakan langkah konkret bersama konsultan kami.</p>
                 </div>
