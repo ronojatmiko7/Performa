@@ -328,30 +328,29 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
   <div className="overflow-hidden">
     <img src="https://i.ibb.co.com/vHpQcdY/2.png"
     alt="Rono Jatmiko"
-    className="w-full object-contain"
+    className="w-full object-contain max-h-80"
     />
   </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Rono Jatmiko</h3>
                 <p className="text-sm font-semibold mb-4" style={{ color: brand.secondary }}>Managing Director</p>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Berlatar belakang di EY Indonesia, ia memimpin pivot strategis Performa. Fokus utamanya adalah mendesain <i>Business Process Reengineering</i> yang berorientasi pada ROI ketat.
+                  Lulusan Fakultas Psikologi Universitas Indonesia dengan pengalaman lebih dari 16 tahun mendampingi Instansi Pemerintahan, BUMN, Perusahaan Swasta, dan Multinational dalam pengembangan strategi bisnis, perbaikan proses bisnis, dan pengembangan SDM.
                 </p>
                 <div className="mb-6 pb-6 border-b border-gray-100">
                   <p className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-2">Pencapaian Kunci:</p>
                   <p className="text-sm text-gray-600">Memimpin proyek optimalisasi BPM dan strategis di grup Pertamina & United Tractors, memotong inefisiensi operasional secara terukur.</p>
                 </div>
-                <a href="#!" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
-                  <LinkedinIcon /> LinkedIn Profile
-                </a>
+                <a href="https://www.linkedin.com/in/ronojatmiko/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
+  <LinkedinIcon /> LinkedIn Profile
+</a>
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-shadow group">
-              <div className="h-64 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rahmi Aulia" className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
-              </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+  <div className="overflow-hidden">
+    <img src="https://i.ibb.co.com/whj2snt9/Untitled-design.png" alt="Rahmi Aulia" className="w-full object-contain max-h-80" />
+  </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Rahmi Aulia</h3>
                 <p className="text-sm font-semibold mb-4" style={{ color: brand.secondary }}>COO and Senior Consultant</p>
@@ -362,9 +361,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                   <p className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-2">Pencapaian Kunci:</p>
                   <p className="text-sm text-gray-600">Mendesain dan mengeksekusi sistem <i>Assessment Center</i> yang menekan angka turnover dan memastikan penempatan karyawan di PP Persero.</p>
                 </div>
-                <a href="#!" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
-                  <LinkedinIcon /> LinkedIn Profile
-                </a>
+                <a href="https://www.linkedin.com/in/rahmiauliaelmu/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
+  <LinkedinIcon /> LinkedIn Profile
+</a>
               </div>
             </div>
           </div>
