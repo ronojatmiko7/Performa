@@ -461,13 +461,10 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
     let diagnosisName = '';
     if (a.mainProblem === 'strategic') {
       diagnosisName = 'Kelumpuhan Arah Strategis';
-      diagnosisColor = 'text-purple-700';
     } else if (a.mainProblem === 'organizational') {
       diagnosisName = 'Sindrom Disfungsi Sistem Organisasi';
-      diagnosisColor = 'text-orange-700';
     } else {
       diagnosisName = 'Krisis Kapabilitas Kepemimpinan';
-      diagnosisColor = 'text-blue-700';
     }
 
     // ── SEVERITY ──
