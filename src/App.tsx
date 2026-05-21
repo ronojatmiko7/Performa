@@ -440,72 +440,131 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
 // ==========================================
 const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
   const [step, setStep] = useState<number>(0);
-  const totalSteps = 7; 
-  
-  const [answers, setAnswers] = useState<AnswersType>({
-    painPoint: '', documentation: '', alignment: '', resistance: '', timeline: '', role: '', companySize: ''
+  const totalSteps = 5;
+
+  const [answers, setAnswers] = useState({
+    mainProblem: '',
+    duration: '',
+    attempted: '',
+    urgency: '',
+    role: ''
   });
-  
+
   const [result, setResult] = useState<ResultType | null>(null);
 
   const handleStart = () => setStep(1);
 
-  const handleAnswer = (question: keyof AnswersType, value: string) => {
+  const handleAnswer = (question: string, value: string) => {
     const newAnswers = { ...answers, [question]: value };
     setAnswers(newAnswers);
-    if (step < totalSteps) { 
-      setTimeout(() => setStep(step + 1), 300); 
-    }
-    else { 
-      calculateResult(newAnswers); 
+    if (step < totalSteps) {
+      setTimeout(() => setStep(step + 1), 300);
+    } else {
+      calculateResult(newAnswers);
     }
   };
 
-  const calculateResult = (finalAnswers: AnswersType) => {
-    const isEnterprise = finalAnswers.companySize === '200+';
-    const recommendedBrand = isEnterprise ? 'Performa Enterprise' : 'Elmu Agile Systems';
-    
-    let trackTitle = '';
-    let observation1 = '';
-    let observation2 = '';
-    let recommendation = '';
-
-    if (finalAnswers.painPoint === 'processes') {
-      trackTitle = 'Arsitektur Proses Bisnis (BPM)';
-      observation1 = 'Terdeteksi adanya ego sektoral yang tinggi. Tanpa perbaikan alur kerja yang lintas-departemen, organisasi Anda membuang waktu dan biaya untuk birokrasi internal.';
-    } else if (finalAnswers.painPoint === 'strategy') {
-      trackTitle = 'Perencanaan Strategis & RJPP';
-      observation1 = 'Kurangnya arah strategis menyebabkan tim Anda bekerja secara reaktif, bukan proaktif. Metrik KPI kemungkinan besar tidak selaras dengan target finansial akhir.';
+  const calculateResult = (a: typeof answers) => {
+    // ── DIAGNOSIS NAME ──
+    let diagnosisName = '';
+    let diagnosisColor = '';
+    if (a.mainProblem === 'strategic') {
+      diagnosisName = 'Kelumpuhan Arah Strategis';
+      diagnosisColor = 'text-purple-700';
+    } else if (a.mainProblem === 'organizational') {
+      diagnosisName = 'Sindrom Disfungsi Sistem Organisasi';
+      diagnosisColor = 'text-orange-700';
     } else {
-      trackTitle = 'Intervensi Organisasi & SDM';
-      observation1 = 'Resistensi perilaku adalah akar masalah Anda. Sebaik apapun sistem atau strategi yang dibuat, tidak akan berjalan jika lapisan manajerial kurang memiliki kapabilitas eksekusi.';
+      diagnosisName = 'Krisis Kapabilitas Kepemimpinan';
+      diagnosisColor = 'text-blue-700';
     }
 
-    if (finalAnswers.documentation === 'none' || finalAnswers.alignment === 'misaligned') {
-      observation2 = 'Kondisi diperparah oleh ketergantungan pada individu tertentu (key person risk) dan ketidakselarasan di level eksekutif/manajerial.';
+    // ── SEVERITY ──
+    let severityScore = 0;
+    if (a.duration === 'chronic') severityScore += 2;
+    else if (a.duration === 'medium') severityScore += 1;
+    if (a.urgency === 'financial') severityScore += 2;
+    else if (a.urgency === 'operational') severityScore += 1;
+    if (a.attempted === 'failed') severityScore += 2;
+    else if (a.attempted === 'inconsistent') severityScore += 1;
+
+    let severity = '';
+    let severityBg = '';
+    let isUrgent = false;
+    if (severityScore >= 4) {
+      severity = 'KRITIS';
+      severityBg = 'bg-red-100 text-red-700 border-red-200';
+      isUrgent = true;
+    } else if (severityScore >= 2) {
+      severity = 'PERLU PERHATIAN SEGERA';
+      severityBg = 'bg-orange-100 text-orange-700 border-orange-200';
     } else {
-      observation2 = 'Anda memiliki dasar dokumen dan visi yang cukup baik, titik kritis kegagalan Anda saat ini murni berada pada tahap adopsi dan kedisiplinan eksekusi.';
+      severity = 'TAHAP AWAL';
+      severityBg = 'bg-yellow-100 text-yellow-700 border-yellow-200';
     }
 
-    if (finalAnswers.role === 'decision_maker' && finalAnswers.timeline === 'immediate') {
-      recommendation = `Mengingat Anda sebagai pengambil keputusan dan urgensi waktu (1-3 bulan), kami sangat menyarankan pendekatan "Sprint Audit" untuk memetakan bottlenecks krusial minggu ini.`;
+    // ── FINDINGS ──
+    const findings: string[] = [];
+
+    // Finding 1 — based on main problem
+    if (a.mainProblem === 'strategic') {
+      findings.push('Organisasi Anda beroperasi tanpa kompas strategis yang jelas. Tim bekerja keras namun ke arah yang berbeda-beda, menyebabkan pemborosan sumber daya yang masif.');
+    } else if (a.mainProblem === 'organizational') {
+      findings.push('Sistem internal organisasi Anda tidak berjalan sebagaimana mestinya. Tumpang tindih peran, SOP yang diabaikan, dan KPI yang tidak relevan adalah gejala struktural yang perlu dibenahi dari akar.');
     } else {
-      recommendation = `Langkah awal terbaik adalah memetakan peta jalan (roadmap) perubahan secara objektif sebelum menggelontorkan anggaran besar untuk pelatihan atau sistem baru.`;
+      findings.push('Kapabilitas kepemimpinan di lapisan manajerial menjadi bottleneck utama. Strategi dan sistem sebaik apapun tidak akan berjalan tanpa pemimpin yang mampu mengeksekusi dan menggerakkan tim.');
     }
 
-    setResult({ 
-      brand: recommendedBrand, 
-      track: trackTitle, 
-      report: [observation1, observation2, recommendation],
-      isUrgent: finalAnswers.timeline === 'immediate'
+    // Finding 2 — based on duration + attempted
+    if (a.duration === 'chronic' && a.attempted === 'failed') {
+      findings.push('Masalah ini bersifat kronis dan telah berulang kali dicoba diselesaikan tanpa hasil yang bertahan. Ini mengindikasikan bahwa solusi yang digunakan selama ini hanya menyentuh gejala, bukan akar masalah.');
+    } else if (a.attempted === 'failed') {
+      findings.push('Upaya perbaikan sebelumnya tidak menghasilkan perubahan yang bertahan. Ini adalah sinyal bahwa pendekatan yang digunakan perlu dievaluasi ulang secara menyeluruh.');
+    } else if (a.attempted === 'inconsistent') {
+      findings.push('Inisiatif perbaikan sudah ada namun tidak konsisten dijalankan. Gap terbesar Anda bukan pada ide atau rencana, melainkan pada sistem eksekusi dan akuntabilitas.');
+    } else {
+      findings.push('Belum ada inisiatif perbaikan yang terstruktur. Ini sebenarnya posisi yang baik — Anda bisa memulai dengan pendekatan yang tepat tanpa harus membongkar sistem yang salah terlebih dahulu.');
+    }
+
+    // Finding 3 — based on urgency + role
+    if (a.urgency === 'financial') {
+      findings.push('Dampak masalah ini sudah menyentuh aspek finansial dan reputasi. Setiap hari tanpa intervensi yang tepat adalah biaya yang terus bertambah.');
+    } else if (a.urgency === 'operational') {
+      findings.push('Operasional harian sudah terganggu. Jika tidak ditangani sekarang, dampaknya akan merambat ke performa finansial dalam waktu dekat.');
+    } else {
+      findings.push('Masalah ini baru mulai mempengaruhi KPI. Ini adalah momentum terbaik untuk bertindak — lebih mudah dan lebih murah menyelesaikannya sebelum menjadi krisis.');
+    }
+
+    // ── TRACK ──
+    let track = '';
+    if (a.mainProblem === 'strategic') track = 'Perencanaan Strategis & RJPP';
+    else if (a.mainProblem === 'organizational') track = 'Arsitektur Proses & Organisasi';
+    else track = 'Pengembangan Kepemimpinan & SDM';
+
+    // ── ROLE-BASED CLOSING ──
+    let closing = '';
+    if (a.role === 'clevel') {
+      closing = 'Sebagai pengambil keputusan, Anda berada di posisi terbaik untuk menginisiasi perubahan ini. Sesi diagnostik 60 menit bersama tim kami dirancang khusus untuk level eksekutif — fokus pada keputusan strategis, bukan teknis.';
+    } else if (a.role === 'manager') {
+      closing = 'Sebagai sponsor proyek, Anda memiliki pengaruh untuk mendorong perubahan dari dalam. Sesi diagnostik kami akan membantu Anda membangun business case yang kuat untuk dibawa ke level atas.';
+    } else {
+      closing = 'Anda sudah mengambil langkah yang tepat dengan mencari solusi. Sesi diagnostik kami akan memberikan Anda peta jalan yang konkret untuk dipresentasikan kepada pimpinan.';
+    }
+
+    setResult({
+      brand: diagnosisName,
+      track,
+      report: [findings[0], findings[1], findings[2], closing],
+      isUrgent,
+      description: `${severity}|${severityBg}|${diagnosisColor}`
     });
-    
-    setTimeout(() => setStep(totalSteps + 1), 500); 
+
+    setTimeout(() => setStep(totalSteps + 1), 500);
   };
 
   const Button: React.FC<ButtonProps> = ({ children, onClick, active, variant = 'outline' }) => {
     const baseStyle = "w-full text-left px-6 py-4 rounded-lg border-2 transition-all duration-200 flex items-center justify-between font-medium";
-    const style = variant === 'solid' 
+    const style = variant === 'solid'
       ? { backgroundColor: brand.secondary, borderColor: brand.secondary, color: 'white' }
       : { borderColor: active ? brand.primary : '#e5e7eb', backgroundColor: active ? '#eff6ff' : 'white', color: active ? brand.primary : '#374151' };
     return <button onClick={onClick} className={baseStyle} style={style}>{children}{active && <CheckCircle2 className="w-5 h-5" />}</button>;
@@ -524,38 +583,39 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           <img src={logoUtama} alt="Logo Performa" className="h-8 object-contain" onError={(e) => handleImageError(e, 'assess-fallback')} />
           <span id="assess-fallback" className="hidden text-xl font-bold tracking-tight" style={{ color: brand.primary }}>Performa</span>
         </div>
-        <button onClick={onBack} className="text-sm font-medium text-gray-500 flex items-center"><ArrowLeft className="w-4 h-4 mr-2"/> Batal</button>
+        <button onClick={onBack} className="text-sm font-medium text-gray-500 flex items-center"><ArrowLeft className="w-4 h-4 mr-2" /> Batal</button>
       </header>
 
       <main className="flex-grow flex items-center justify-center p-6 text-center">
         <div className="max-w-2xl w-full">
-          
+
           {step === 0 && (
             <div className="bg-white p-10 md:p-14 rounded-2xl shadow-xl border border-gray-100">
-               <div className="inline-block p-4 rounded-full mb-6" style={{ backgroundColor: `${brand.primary}15` }}>
-                 <AlertTriangle className="w-10 h-10" style={{ color: brand.primary }} />
-               </div>
-               <h1 className="text-3xl font-bold mb-4" style={{ color: brand.primary }}>Diagnosis Kebocoran Organisasi</h1>
-               <p className="text-gray-600 text-lg mb-8 leading-relaxed">Jawab 7 pertanyaan singkat ini. Kami akan menghasilkan <b>Mini-Report</b> otomatis mengenai area mana dari operasional Anda yang membakar anggaran dan gagal mencapai KPI.</p>
-               <div className="max-w-xs mx-auto">
-                 <Button variant="solid" onClick={handleStart}>Mulai Diagnostik <ArrowRight className="w-5 h-5 ml-2" /></Button>
-               </div>
+              <div className="inline-block p-4 rounded-full mb-6" style={{ backgroundColor: `${brand.primary}15` }}>
+                <AlertTriangle className="w-10 h-10" style={{ color: brand.primary }} />
+              </div>
+              <h1 className="text-3xl font-bold mb-4" style={{ color: brand.primary }}>Diagnosis Kebocoran Organisasi</h1>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">Jawab 5 pertanyaan singkat ini. Kami akan menghasilkan <b>Mini-Report</b> otomatis mengenai kondisi organisasi Anda dan area yang paling kritis untuk segera ditangani.</p>
+              <div className="max-w-xs mx-auto">
+                <Button variant="solid" onClick={handleStart}>Mulai Diagnostik <ArrowRight className="w-5 h-5 ml-2" /></Button>
+              </div>
             </div>
           )}
 
           {step === 1 && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
               <ProgressBar />
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Apa gejala utama yang mengancam target perusahaan saat ini?</h2>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">Apa yang paling menghambat pertumbuhan organisasi Anda saat ini?</h2>
+              <p className="text-gray-500 text-sm mb-6">Pilih yang paling mendekati kondisi Anda.</p>
               <div className="space-y-4">
-                <Button active={answers.painPoint === 'processes'} onClick={() => handleAnswer('painPoint', 'processes')}>
-                  <span className="flex items-center text-sm md:text-base"><Activity className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Birokrasi internal berbelit, silo antar departemen saling hambat.</span>
+                <Button active={answers.mainProblem === 'strategic'} onClick={() => handleAnswer('mainProblem', 'strategic')}>
+                  <span className="flex items-center text-sm md:text-base"><Target className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Arah strategis tidak jelas — target 1-5 tahun kabur atau tidak realistis.</span>
                 </Button>
-                <Button active={answers.painPoint === 'strategy'} onClick={() => handleAnswer('painPoint', 'strategy')}>
-                  <span className="flex items-center text-sm md:text-base"><Target className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Strategi bisnis buram, eksekutif tidak punya rencana 1-3 tahun yang tajam.</span>
+                <Button active={answers.mainProblem === 'organizational'} onClick={() => handleAnswer('mainProblem', 'organizational')}>
+                  <span className="flex items-center text-sm md:text-base"><Activity className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Sistem & proses berantakan — struktur, SOP, KPI, atau job desc tidak berjalan.</span>
                 </Button>
-                <Button active={answers.painPoint === 'people'} onClick={() => handleAnswer('painPoint', 'people')}>
-                  <span className="flex items-center text-sm md:text-base"><Users className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Target jelas, namun tim lapangan pasif dan manajer gagal memimpin.</span>
+                <Button active={answers.mainProblem === 'people'} onClick={() => handleAnswer('mainProblem', 'people')}>
+                  <span className="flex items-center text-sm md:text-base"><Users className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Orang & kepemimpinan — manajer tidak efektif, tim tidak berkembang.</span>
                 </Button>
               </div>
             </div>
@@ -564,11 +624,12 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           {step === 2 && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
               <ProgressBar />
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Sejujurnya, bagaimana kondisi SOP / Alur Kerja Anda di lapangan?</h2>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">Sudah berapa lama masalah ini dirasakan?</h2>
+              <p className="text-gray-500 text-sm mb-6">Durasi mempengaruhi kedalaman intervensi yang dibutuhkan.</p>
               <div className="space-y-4">
-                <Button active={answers.documentation === 'none'} onClick={() => handleAnswer('documentation', 'none')}>Sangat bergantung pada ingatan dan "feeling" individu tertentu.</Button>
-                <Button active={answers.documentation === 'some'} onClick={() => handleAnswer('documentation', 'some')}>Ada SOP lama, tapi sudah tidak relevan dengan kondisi bisnis saat ini.</Button>
-                <Button active={answers.documentation === 'ignored'} onClick={() => handleAnswer('documentation', 'ignored')}>SOP tebal dan lengkap, tapi 80% karyawan mengabaikannya.</Button>
+                <Button active={answers.duration === 'new'} onClick={() => handleAnswer('duration', 'new')}>Baru muncul — kurang dari 6 bulan.</Button>
+                <Button active={answers.duration === 'medium'} onClick={() => handleAnswer('duration', 'medium')}>Sudah lama tapi baru jadi prioritas — 6 bulan hingga 2 tahun.</Button>
+                <Button active={answers.duration === 'chronic'} onClick={() => handleAnswer('duration', 'chronic')}>Masalah kronis yang berulang — lebih dari 2 tahun.</Button>
               </div>
             </div>
           )}
@@ -576,11 +637,12 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           {step === 3 && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
               <ProgressBar />
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Seberapa padu jajaran Eksekutif/Manajemen dalam mengejar target?</h2>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">Apa yang sudah pernah dicoba?</h2>
+              <p className="text-gray-500 text-sm mb-6">Jujur di sini akan membuat hasil diagnostik lebih akurat.</p>
               <div className="space-y-4">
-                <Button active={answers.alignment === 'misaligned'} onClick={() => handleAnswer('alignment', 'misaligned')}>Ada konflik prioritas yang tak terlihat antar petinggi divisi.</Button>
-                <Button active={answers.alignment === 'somewhat'} onClick={() => handleAnswer('alignment', 'somewhat')}>Sepakat di ruang rapat, namun beda interpretasi saat eksekusi.</Button>
-                <Button active={answers.alignment === 'aligned'} onClick={() => handleAnswer('alignment', 'aligned')}>Sangat padu di atas, masalah murni ada di lapisan pekerja bawah.</Button>
+                <Button active={answers.attempted === 'none'} onClick={() => handleAnswer('attempted', 'none')}>Belum ada inisiatif yang terstruktur sama sekali.</Button>
+                <Button active={answers.attempted === 'inconsistent'} onClick={() => handleAnswer('attempted', 'inconsistent')}>Sudah ada upaya tapi tidak konsisten dijalankan.</Button>
+                <Button active={answers.attempted === 'failed'} onClick={() => handleAnswer('attempted', 'failed')}>Sudah dicoba berkali-kali namun hasilnya tidak pernah bertahan.</Button>
               </div>
             </div>
           )}
@@ -588,11 +650,12 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           {step === 4 && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
               <ProgressBar />
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Bagaimana kultur tim Anda saat dipaksa menggunakan sistem baru?</h2>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">Seberapa kritis dampaknya sekarang?</h2>
+              <p className="text-gray-500 text-sm mb-6">Ini menentukan tingkat urgensi intervensi yang kami rekomendasikan.</p>
               <div className="space-y-4">
-                <Button active={answers.resistance === 'high'} onClick={() => handleAnswer('resistance', 'high')}>Menolak keras. Berdalih sistem lama lebih nyaman.</Button>
-                <Button active={answers.resistance === 'confusion'} onClick={() => handleAnswer('resistance', 'confusion')}>Berusaha patuh, namun bingung dan sering melakukan kesalahan.</Button>
-                <Button active={answers.resistance === 'good'} onClick={() => handleAnswer('resistance', 'good')}>Cepat beradaptasi asalkan instruksinya masuk akal.</Button>
+                <Button active={answers.urgency === 'kpi'} onClick={() => handleAnswer('urgency', 'kpi')}>Mulai mempengaruhi pencapaian target & KPI perusahaan.</Button>
+                <Button active={answers.urgency === 'operational'} onClick={() => handleAnswer('urgency', 'operational')}>Sudah mengganggu operasional harian secara nyata.</Button>
+                <Button active={answers.urgency === 'financial'} onClick={() => handleAnswer('urgency', 'financial')}>Sudah berdampak langsung pada finansial atau reputasi perusahaan.</Button>
               </div>
             </div>
           )}
@@ -600,91 +663,76 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           {step === 5 && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
               <ProgressBar />
-              <h2 className="text-2xl font-bold mb-2 text-gray-900">Seberapa mendesak kebutuhan untuk menyelesaikan hambatan ini?</h2>
-              <p className="text-gray-500 mb-6">Membantu kami merekomendasikan intervensi yang realistis.</p>
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">Siapa Anda dalam konteks ini?</h2>
+              <p className="text-gray-500 text-sm mb-6">Membantu kami menyesuaikan rekomendasi yang paling relevan.</p>
               <div className="space-y-4">
-                <Button active={answers.timeline === 'immediate'} onClick={() => handleAnswer('timeline', 'immediate')}>Sangat Kritis (Harus ada perbaikan dalam 1-3 bulan ke depan).</Button>
-                <Button active={answers.timeline === 'medium'} onClick={() => handleAnswer('timeline', 'medium')}>Menengah (Target penyelesaian 3-6 bulan ke depan).</Button>
-                <Button active={answers.timeline === 'exploration'} onClick={() => handleAnswer('timeline', 'exploration')}>Belum Mendesak (Hanya memetakan opsi untuk tahun depan).</Button>
+                <Button active={answers.role === 'clevel'} onClick={() => handleAnswer('role', 'clevel')}>
+                  <span className="flex items-center text-sm md:text-base"><Building2 className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> C-Level / Direksi — saya yang memutuskan.</span>
+                </Button>
+                <Button active={answers.role === 'manager'} onClick={() => handleAnswer('role', 'manager')}>
+                  <span className="flex items-center text-sm md:text-base"><Briefcase className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Manajemen Menengah — saya sponsor atau influencer.</span>
+                </Button>
+                <Button active={answers.role === 'executor'} onClick={() => handleAnswer('role', 'executor')}>
+                  <span className="flex items-center text-sm md:text-base"><Users className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Tim Pelaksana — saya ditugaskan mencari solusi.</span>
+                </Button>
               </div>
             </div>
           )}
 
-          {step === 6 && (
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
-              <ProgressBar />
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">Apa peran Anda terkait inisiatif perbaikan ini?</h2>
-              <div className="space-y-4">
-                <Button active={answers.role === 'decision_maker'} onClick={() => handleAnswer('role', 'decision_maker')}>C-Level / Eksekutif (Pengambil Keputusan & Anggaran Utama).</Button>
-                <Button active={answers.role === 'manager'} onClick={() => handleAnswer('role', 'manager')}>Manajemen Menengah (Sponsor Proyek / Influencer Kuat).</Button>
-                <Button active={answers.role === 'executor'} onClick={() => handleAnswer('role', 'executor')}>Tim Eksekusi (Ditugaskan mencari solusi oleh atasan).</Button>
-              </div>
-            </div>
-          )}
+          {step === 6 && result && (() => {
+            const [severity, severityBg, diagnosisColor] = (result.description || '').split('|');
+            return (
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 animate-in zoom-in-95 duration-500 text-left">
+                <div className="py-6 px-8 bg-gray-900 border-b border-gray-800 flex justify-between items-center">
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#4cc9f0] mb-1">Hasil Diagnostik Organisasi</h3>
+                    <h2 className={`text-2xl font-bold text-white`}>{result.brand}</h2>
+                  </div>
+                  <span className={`text-xs font-bold px-3 py-1 rounded-full border ${severityBg} ${result.isUrgent ? 'animate-pulse' : ''}`}>
+                    {severity}
+                  </span>
+                </div>
 
-          {step === 7 && (
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
-              <ProgressBar />
-              <h2 className="text-2xl font-bold mb-2 text-gray-900">Terakhir: Berapa jumlah karyawan di organisasi Anda?</h2>
-              <p className="text-gray-500 mb-6">Mempengaruhi struktur kerangka kerja yang akan digunakan.</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button onClick={() => handleAnswer('companySize', '<200')} className={`p-8 rounded-xl border-2 transition-all flex flex-col items-center text-center ${answers.companySize === '<200' ? 'bg-blue-50' : 'hover:bg-gray-50 bg-white'}`} style={{ borderColor: answers.companySize === '<200' ? brand.primary : '#e5e7eb' }}>
-                  <Briefcase className="w-12 h-12 mb-4 text-gray-400" />
-                  <span className="text-xl font-bold text-gray-900 mb-2">Kurang dari 200</span>
-                  <span className="text-sm text-gray-500">Karyawan</span>
-                </button>
-                <button onClick={() => handleAnswer('companySize', '200+')} className={`p-8 rounded-xl border-2 transition-all flex flex-col items-center text-center ${answers.companySize === '200+' ? 'bg-blue-50' : 'hover:bg-gray-50 bg-white'}`} style={{ borderColor: answers.companySize === '200+' ? brand.primary : '#e5e7eb' }}>
-                  <Building2 className="w-12 h-12 mb-4 text-gray-400" />
-                  <span className="text-xl font-bold text-gray-900 mb-2">200 atau Lebih</span>
-                  <span className="text-sm text-gray-500">Karyawan (Enterprise)</span>
-                </button>
-              </div>
-            </div>
-          )}
-
-          {step === 8 && result && (
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 animate-in zoom-in-95 duration-500 text-left">
-              <div className="py-6 px-8 bg-gray-900 border-b border-gray-800 relative flex justify-between items-center">
-                 <div>
-                   <h3 className="text-xs font-bold uppercase tracking-widest text-[#4cc9f0] mb-1">Hasil Diagnostik</h3>
-                   <h2 className="text-2xl font-bold text-white">{result.brand}</h2>
-                 </div>
-                 {result.isUrgent && <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">URGENT</span>}
-              </div>
-
-              <div className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4 border-b pb-2">Ringkasan Eksekutif (Mini-Report):</h3>
-                  <ul className="space-y-4">
+                <div className="p-8">
+                  <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Temuan Utama:</h3>
+                  <ul className="space-y-4 mb-8">
                     <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                        <span className="text-red-600 text-xs font-bold">1</span>
+                      </div>
                       <span className="text-gray-700 text-sm leading-relaxed">{result.report[0]}</span>
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                        <span className="text-orange-600 text-xs font-bold">2</span>
+                      </div>
                       <span className="text-gray-700 text-sm leading-relaxed">{result.report[1]}</span>
                     </li>
                     <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-900 font-medium text-sm leading-relaxed">{result.report[2]}</span>
+                      <div className="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                        <span className="text-yellow-600 text-xs font-bold">3</span>
+                      </div>
+                      <span className="text-gray-700 text-sm leading-relaxed">{result.report[2]}</span>
                     </li>
                   </ul>
-                </div>
 
-                <div className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-8">
-                   <p className="text-sm font-bold text-blue-900 mb-1">Fokus Intervensi yang Disarankan:</p>
-                   <p className="text-blue-800 text-lg font-bold">{result.track}</p>
-                </div>
+                  <div className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-6">
+                    <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">Fokus Intervensi yang Disarankan</p>
+                    <p className="text-blue-800 text-lg font-bold">{result.track}</p>
+                  </div>
 
-                <div className="space-y-4">
-                  <Button variant="solid" onClick={() => window.open('https://calendly.com/performaconsulting/diagnostic', '_blank')}>
-   Jadwalkan Sesi Diagnostik 60-Menit (Gratis) <ChevronRight className="w-5 h-5 ml-1" />
-</Button>
-                  <p className="text-xs text-center text-gray-500 mt-2">Sesi eksekutif ini dirancang khusus untuk mendiskusikan laporan di atas lebih dalam dan memetakan solusi.</p>
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-8">
+                    <p className="text-gray-700 text-sm leading-relaxed">{result.report[3]}</p>
+                  </div>
+
+                  <Button variant="solid" onClick={() => window.open('https://calendly.com/diagnosticcall/diagnostic', '_blank')}>
+                    Jadwalkan Sesi Diagnostik 60-Menit (Gratis) <ChevronRight className="w-5 h-5 ml-1" />
+                  </Button>
+                  <p className="text-xs text-center text-gray-400 mt-3">Sesi ini dirancang khusus untuk mendiskusikan temuan di atas dan memetakan langkah konkret bersama konsultan kami.</p>
                 </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
         </div>
       </main>
     </div>
