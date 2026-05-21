@@ -326,7 +326,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
   <div className="overflow-hidden">
-    <img src="https://i.ibb.co.com/NdKgjz5v/IMG20170220142420-copy-2.png"
+    <img src="https://i.ibb.co.com/vHpQcdY/2.png"
     alt="Rono Jatmiko"
     className="w-full object-contain"
     />
