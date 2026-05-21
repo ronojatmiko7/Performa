@@ -72,6 +72,7 @@ const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, fall
 // 1. KOMPONEN HALAMAN UTAMA (HOMEPAGE)
 // ==========================================
 const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       {/* NAVBAR */}
@@ -101,13 +102,23 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
   </a>
 </div>
 
-<div className="flex md:hidden">
+<div className="flex md:hidden items-center space-x-3">
   <button
     className="px-4 py-2 rounded-lg text-white text-sm font-semibold"
     style={{ backgroundColor: brand.secondary }}
     onClick={onStartAssessment}
   >
     Diagnostik Gratis
+  </button>
+  <button
+    className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+    onClick={() => setMenuOpen(!menuOpen)}
+  >
+    {menuOpen ? (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+    )}
   </button>
 </div>
           <div className="hidden md:flex items-center space-x-4">
@@ -127,6 +138,22 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             </button>
           </div>
         </div>
+        {menuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
+            <a href="#masalah" onClick={() => setMenuOpen(false)} className="flex items-center text-sm font-semibold text-gray-600 hover:text-[#107dac] py-2 transition-colors">
+              <Activity className="w-4 h-4 mr-3" /> Solusi
+            </a>
+            <a href="#tim" onClick={() => setMenuOpen(false)} className="flex items-center text-sm font-semibold text-gray-600 hover:text-[#107dac] py-2 transition-colors">
+              <Users className="w-4 h-4 mr-3" /> Konsultan Kami
+            </a>
+            <a href={insightsURL} onClick={() => setMenuOpen(false)} className="flex items-center text-sm font-semibold text-[#005073] py-2 hover:opacity-80 transition-all">
+              <BookOpen className="w-4 h-4 mr-3" /> Insights & Studi Kasus
+            </a>
+            <a href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut" target="_blank" rel="noreferrer" className="flex items-center text-sm font-semibold text-green-600 py-2 hover:opacity-80 transition-all">
+              <WhatsAppIcon /> Hubungi via WhatsApp
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* HERO SECTION */}
