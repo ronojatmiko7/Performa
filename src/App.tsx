@@ -75,7 +75,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
   return (
     <div className="min-h-screen bg-white">
       {/* NAVBAR */}
-      <nav className="fixed w-full z-50 bg-white border-b border-gray-100 transition-all shadow-sm">
+      <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all shadow-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
           <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
             <img 
@@ -89,7 +89,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             </span>
           </div>
           
-          <div className="hidden lg:flex space-x-8 items-center text-sm font-medium text-gray-600">
+          <div className="hidden lg:flex space-x-8 items-center text-sm font-semibold text-gray-500 tracking-wide">
             <a href="#masalah" className="hover:text-[#107dac] transition-colors">Solusi</a>
             <a href="#tim" className="hover:text-[#107dac] transition-colors">Konsultan Kami</a>
             <a href={insightsURL} className="flex items-center text-[#005073] font-bold border-l pl-6 hover:opacity-80 transition-all">
