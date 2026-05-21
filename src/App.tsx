@@ -9,15 +9,7 @@ import {
 // TYPE DEFINITIONS
 // ==========================================
 
-interface AnswersType {
-  painPoint: string;
-  documentation: string;
-  alignment: string;
-  resistance: string;
-  timeline: string;
-  role: string;
-  companySize: string;
-}
+
 
 interface ResultType {
   brand: string;
@@ -680,7 +672,7 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
           )}
 
           {step === 6 && result && (() => {
-            const [severity, severityBg, diagnosisColor] = (result.description || '').split('|');
+            const [severity, severityBg] = (result.description || '').split('|');
             return (
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 animate-in zoom-in-95 duration-500 text-left">
                 <div className="py-6 px-8 bg-gray-900 border-b border-gray-800 flex justify-between items-center">
