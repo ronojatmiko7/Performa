@@ -90,12 +90,16 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           </div>
           
           <div className="hidden lg:flex space-x-8 items-center text-sm font-semibold text-gray-500 tracking-wide">
-            <a href="#masalah" className="hover:text-[#107dac] transition-colors">Solusi</a>
-            <a href="#tim" className="hover:text-[#107dac] transition-colors">Konsultan Kami</a>
-            <a href={insightsURL} className="flex items-center text-[#005073] font-bold border-l pl-6 hover:opacity-80 transition-all">
-              <BookOpen className="w-4 h-4 mr-2" /> Insights & Studi Kasus
-            </a>
-          </div>
+  <a href="#masalah" className="flex items-center hover:text-[#107dac] transition-colors">
+    <Activity className="w-4 h-4 mr-2" /> Solusi
+  </a>
+  <a href="#tim" className="flex items-center hover:text-[#107dac] transition-colors">
+    <Users className="w-4 h-4 mr-2" /> Konsultan Kami
+  </a>
+  <a href={insightsURL} className="flex items-center text-[#005073] font-bold border-l pl-6 hover:opacity-80 transition-all">
+    <BookOpen className="w-4 h-4 mr-2" /> Insights & Studi Kasus
+  </a>
+</div>
 
 <div className="flex md:hidden">
   <button
