@@ -459,7 +459,6 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
   const calculateResult = (a: typeof answers) => {
     // ── DIAGNOSIS NAME ──
     let diagnosisName = '';
-    let diagnosisColor = '';
     if (a.mainProblem === 'strategic') {
       diagnosisName = 'Kelumpuhan Arah Strategis';
       diagnosisColor = 'text-purple-700';
