@@ -410,23 +410,21 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               Centennial Tower 29 Floor Unit DE, Jakarta Selatan 12930
             </p>
           </div>
-          <div>
-            <h4 className="text-gray-900 font-bold mb-6 italic">Strategic Resources</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href={insightsURL} className="hover:text-[#107dac] transition-colors">Case Studies</a></li>
-              <li><a href={insightsURL} className="hover:text-[#107dac] transition-colors">Whitepapers</a></li>
-              <li><a href={insightsURL} className="hover:text-[#107dac] transition-colors">Leadership Blog</a></li>
-              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Newsletter</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-gray-900 font-bold mb-6">Layanan</h4>
-            <ul className="space-y-3 text-sm">
-              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Arsitektur Proses</a></li>
-              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Penyusunan RJPP</a></li>
-              <li><a href="#!" className="hover:text-[#107dac] transition-colors">Pengembangan SDM</a></li>
-            </ul>
-          </div>
+          <div className="col-span-2">
+  <h4 className="text-gray-900 font-bold mb-6">Hubungi Kami</h4>
+  
+    href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center px-6 py-3 rounded-lg text-white font-semibold text-sm transition-all hover:opacity-90"
+    style={{ backgroundColor: '#25D366' }}
+  >
+    <WhatsAppIcon /> Chat via WhatsApp
+  </a>
+  <p className="text-sm text-gray-500 mt-4">
+    Senin – Jumat, 09.00 – 17.00 WIB
+  </p>
+</div>
         </div>
         <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-gray-200 text-sm flex justify-center items-center text-gray-500">
           <p>© 2026 PT. Performa International Indonesia. All rights reserved.</p>
