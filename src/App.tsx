@@ -369,7 +369,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             Stop Menebak Dimana Kebocoran Sistem Anda.
           </h2>
           <p className="text-gray-600 text-lg mb-10">
-            Gunakan alat diagnostik kami. Dapatkan <b>Mini-Report</b> seketika tentang celah operasional Anda, dan jadwalkan 60 menit diagnostik mendalam bersama tim kepemimpinan kami.
+            Gunakan alat diagnostik kami. Dapatkan <b>Mini-Report</b> seketika tentang celah operasional Anda, dan jadwalkan 60 menit diagnostik mendalam bersama tim konsultan kami.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <button 
