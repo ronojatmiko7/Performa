@@ -747,7 +747,7 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
                     <p className="text-gray-700 text-sm leading-relaxed">{result.report[3]}</p>
                   </div>
 
-                  <Button variant="solid" onClick={() => window.open('https://calendly.com/diagnosticcall/diagnostic', '_blank')}>
+                  <Button variant="solid" onClick={() => window.open('https://calendly.com/performaconsulting/diagnostic', '_blank')}>
                     Jadwalkan Sesi Diagnostik Online 60-Menit (Gratis) <ChevronRight className="w-5 h-5 ml-1" />
                   </Button>
                   <p className="text-xs text-center text-gray-400 mt-3">Sesi ini dirancang khusus untuk mendiskusikan temuan di atas dan memetakan langkah konkret bersama konsultan kami.</p>
