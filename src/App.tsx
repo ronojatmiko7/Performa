@@ -97,6 +97,15 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             </a>
           </div>
 
+<div className="flex md:hidden">
+  <button
+    className="px-4 py-2 rounded-lg text-white text-sm font-semibold"
+    style={{ backgroundColor: brand.secondary }}
+    onClick={onStartAssessment}
+  >
+    Diagnostik Gratis
+  </button>
+</div>
           <div className="hidden md:flex items-center space-x-4">
             <a 
   href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
@@ -568,7 +577,7 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       <header className="bg-white shadow-sm border-b border-gray-100 py-4 px-6 flex justify-between items-center sticky top-0 z-10">
         <div className="flex items-center">
-          <img src={logoUtama} alt="Logo Performa" className="h-8 object-contain" onError={(e) => handleImageError(e, 'assess-fallback')} />
+          <img src={logoUtama} alt="Logo Performa" className="h-12 object-contain" onError={(e) => handleImageError(e, 'assess-fallback')} />
           <span id="assess-fallback" className="hidden text-xl font-bold tracking-tight" style={{ color: brand.primary }}>Performa</span>
         </div>
         <button onClick={onBack} className="text-sm font-medium text-gray-500 flex items-center"><ArrowLeft className="w-4 h-4 mr-2" /> Batal</button>
