@@ -335,7 +335,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Rono Jatmiko</h3>
                 <p className="text-sm font-semibold mb-4" style={{ color: brand.secondary }}>Managing Director</p>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Lulusan Fakultas Psikologi Universitas Indonesia dengan pengalaman lebih dari 16 tahun mendampingi Instansi Pemerintahan, BUMN, Perusahaan Swasta, dan Multinational dalam pengembangan strategi bisnis, perbaikan proses bisnis, dan pengembangan SDM.
+                  Lulusan Fakultas Psikologi Universitas Indonesia dengan pengalaman lebih dari 16 tahun mendampingi Instansi Pemerintahan, BUMN, Perusahaan Swasta, dan Multinational dalam pengembangan strategi bisnis, perbaikan proses bisnis, dan pengembangan SDM. Sebelum di Performa, Rono pernah memimpin unit Learning & Development di EY Indonesia, salah satu Big Four Firm.
                 </p>
                 <a href="https://www.linkedin.com/in/ronojatmiko/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
   <LinkedinIcon /> LinkedIn Profile
