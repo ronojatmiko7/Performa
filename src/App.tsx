@@ -337,10 +337,6 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   Lulusan Fakultas Psikologi Universitas Indonesia dengan pengalaman lebih dari 16 tahun mendampingi Instansi Pemerintahan, BUMN, Perusahaan Swasta, dan Multinational dalam pengembangan strategi bisnis, perbaikan proses bisnis, dan pengembangan SDM.
                 </p>
-                <div className="mb-6 pb-6 border-b border-gray-100">
-                  <p className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-2">Pencapaian Kunci:</p>
-                  <p className="text-sm text-gray-600">Memimpin proyek optimalisasi BPM dan strategis di grup Pertamina & United Tractors, memotong inefisiensi operasional secara terukur.</p>
-                </div>
                 <a href="https://www.linkedin.com/in/ronojatmiko/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
   <LinkedinIcon /> LinkedIn Profile
 </a>
@@ -357,10 +353,6 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   Pakar pengembangan kapabilitas organisasi. Ujung tombak dalam memetakan <i>Talent Assessment</i> dan rekayasa sumber daya manusia korporat.
                 </p>
-                <div className="mb-6 pb-6 border-b border-gray-100">
-                  <p className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-2">Pencapaian Kunci:</p>
-                  <p className="text-sm text-gray-600">Mendesain dan mengeksekusi sistem <i>Assessment Center</i> yang menekan angka turnover dan memastikan penempatan karyawan di PP Persero.</p>
-                </div>
                 <a href="https://www.linkedin.com/in/rahmiauliaelmu/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
   <LinkedinIcon /> LinkedIn Profile
 </a>
