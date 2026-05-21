@@ -324,14 +324,13 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-shadow group">
-              <div className="h-64 overflow-hidden relative">
-                <img src="https://i.ibb.co.com/NdKgjz5v/IMG20170220142420-copy-2.png"
-                alt="Rono Jatmiko"
-  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-/>
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
-              </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+  <div className="overflow-hidden">
+    <img src="https://i.ibb.co.com/NdKgjz5v/IMG20170220142420-copy-2.png"
+    alt="Rono Jatmiko"
+    className="w-full object-contain"
+    />
+  </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Rono Jatmiko</h3>
                 <p className="text-sm font-semibold mb-4" style={{ color: brand.secondary }}>Managing Director</p>
