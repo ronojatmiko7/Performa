@@ -107,8 +107,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
   </button>
 </div>
           <div className="hidden md:flex items-center space-x-4">
-            <a 
-  href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
+            <a href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
   target="_blank"
   rel="noreferrer"
   className="px-4 py-2 text-sm font-semibold text-green-600 hover:text-green-700 transition-all flex items-center"
@@ -380,8 +379,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             >
               Mulai Diagnostik Sekarang <ArrowRight className="ml-3 w-6 h-6" />
             </button>
-            <a 
-  href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
+            <a href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
   target="_blank"
   rel="noreferrer"
   className="px-4 py-2 text-sm font-semibold text-green-600 hover:text-green-700 transition-all flex items-center"
@@ -413,7 +411,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           <div className="col-span-2">
   <h4 className="text-gray-900 font-bold mb-6">Hubungi Kami</h4>
   
-    href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
+    <a href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
     target="_blank"
     rel="noreferrer"
     className="inline-flex items-center px-6 py-3 rounded-lg text-white font-semibold text-sm transition-all hover:opacity-90"
