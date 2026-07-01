@@ -616,7 +616,6 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
 
   const [result, setResult] = useState<ResultType | null>(null);
   const [leadSubmitting, setLeadSubmitting] = useState(false);
-  const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [leadError, setLeadError] = useState('');
 
   const handleStart = () => setStep(1);
@@ -902,7 +901,6 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
                   setLeadSubmitting(true);
                   setTimeout(() => {
                     setLeadSubmitting(false);
-                    setLeadSubmitted(true);
                     setStep(7);
                   }, 400);
                 }}
