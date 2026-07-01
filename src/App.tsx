@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ArrowRight, Activity, Target, Users, CheckCircle2, 
-  ChevronRight, Shield, Building2, Briefcase, 
+import {
+  ArrowRight, Activity, Target, Users, CheckCircle2,
+  ChevronRight, Building2, Briefcase,
   ArrowLeft, CheckCircle, AlertTriangle, BookOpen, FileText
 } from 'lucide-react';
 
 // ==========================================
 // TYPE DEFINITIONS
 // ==========================================
-
-
 
 interface ResultType {
   brand: string;
@@ -45,7 +43,7 @@ const brand = {
 };
 
 const logoUtama = "https://i.ibb.co.com/1f7TdvLj/performa-only-logo.jpg";
-const insightsURL = "https://insights.performa.co.id"; 
+const insightsURL = "https://www.performa.co.id/insights";
 
 const LinkedinIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
@@ -75,6 +73,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
+
       {/* NAVBAR */}
       <nav style={{ backgroundColor: "#fff", borderBottom: "1px solid #e5e7eb" }}
         className="fixed w-full z-50 shadow-sm">
@@ -162,9 +161,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
       {/* HERO SECTION */}
       <section className="relative pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden bg-gray-900">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-            alt="Corporate Meeting" 
+          <img
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+            alt="Corporate Meeting"
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${brand.primary}f2, ${brand.primary}cc)` }}></div>
@@ -174,17 +173,17 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-sm font-medium mb-6 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: brand.accent }}></span>
-              <span>Konsultan Transformasi BUMN & Enterprise</span>
+              <span>Performance Consulting untuk BUMN &amp; Enterprise</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight">
-              Menghilangkan Ego Sektoral.<br />
-              <span style={{ color: brand.accent }}>Memastikan Strategi Dieksekusi.</span>
+              Sudah Coba Berbagai Cara,<br />
+              <span style={{ color: brand.accent }}>Tapi Target Kinerja Tetap Tidak Terasa?</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-200 mb-10 leading-relaxed max-w-2xl font-light">
-              Kami membantu BUMN & Enterprise menyelaraskan proses bisnis yang berantakan, membongkar silo antar departemen, dan menghentikan pemborosan anggaran akibat strategi yang gagal dieksekusi di lapangan.
+              Pelatihan sudah dijalankan. SOP sudah dibuat ulang. Konsultan sudah pernah masuk. Enam bulan kemudian, angkanya masih di tempat yang sama. Mungkin yang belum sempat dilakukan adalah berhenti sejenak, dan benar-benar mencari tahu di mana akar masalahnya.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button 
+              <button
                 className="px-8 py-4 rounded-lg text-white font-semibold flex items-center justify-center transition-all hover:bg-opacity-90 shadow-lg"
                 style={{ backgroundColor: brand.secondary }}
                 onClick={onStartAssessment}
@@ -210,7 +209,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="group cursor-pointer">
+            <a href={insightsURL} className="group cursor-pointer">
               <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
               </div>
@@ -219,9 +218,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center italic">
                 <FileText className="w-3 h-3 mr-1" /> Whitepaper
               </span>
-            </div>
+            </a>
 
-            <div className="group cursor-pointer">
+            <a href={insightsURL} className="group cursor-pointer">
               <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
                 <img src="https://images.unsplash.com/photo-1454165833772-d99626a4407d?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
               </div>
@@ -230,9 +229,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center italic">
                 <CheckCircle className="w-3 h-3 mr-1" /> Case Study
               </span>
-            </div>
+            </a>
 
-            <div className="group cursor-pointer">
+            <a href={insightsURL} className="group cursor-pointer">
               <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
               </div>
@@ -241,47 +240,115 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center italic">
                 <BookOpen className="w-3 h-3 mr-1" /> Leadership Insight
               </span>
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* THE PROBLEM / AGITATION */}
+      {/* THE PROBLEM / WHY IT KEEPS HAPPENING */}
       <section id="masalah" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="max-w-3xl mx-auto mb-16 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: brand.primary }}>
-              Strategi Brilian Seringkali Mati di Tahap Eksekusi.
+              Kenapa Ini Terus Berulang
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Banyak perusahaan membuang miliaran rupiah untuk inisiatif perubahan yang pada akhirnya mandek. Jika Anda mengalami salah satu dari gejala ini, KPIs Anda sedang terancam:
+              Begitu kinerja macet, organisasi biasanya langsung bergerak ke solusi yang paling familiar — pelatihan, restrukturisasi, SOP baru. Solusi itu dipilih karena paling cepat disepakati semua orang di ruang rapat, bukan karena sudah terbukti itu akar masalahnya.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-red-100 hover:shadow-md transition-shadow relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-red-50 text-red-600 text-xs font-bold px-3 py-1 rounded-bl-lg">Risiko Tinggi</div>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6" style={{ backgroundColor: `${brand.primary}10`, color: brand.primary }}>
-                <Shield className="w-6 h-6" />
+          <div className="max-w-3xl mx-auto mb-16 text-center">
+            <p className="text-gray-700 text-lg leading-relaxed font-medium">
+              Kinerja yang macet bisa berasal dari empat tempat yang sangat berbeda. Kalau yang diperbaiki ternyata bukan yang sebenarnya bermasalah, usaha sebesar apa pun tidak akan membuat angkanya bergerak.
+            </p>
+          </div>
+
+          {/* FOUR LAYER DIAGNOSTIC MAP */}
+          <div className="max-w-4xl mx-auto space-y-3">
+            <div className="flex items-stretch bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="w-2 flex-shrink-0" style={{ backgroundColor: brand.primary }}></div>
+              <div className="p-6 flex-1">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>0 &mdash; Strategi</span>
+                <p className="text-gray-800 mt-1">Strategi belum cukup jelas, atau target unit ternyata tidak pernah benar-benar diturunkan dari strategi perusahaan.</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">Silo & Ego Sektoral</h3>
-              <p className="text-gray-600">Setiap departemen bergerak dengan metriknya sendiri. Hasilnya? Saling lempar tanggung jawab, waktu terbuang, dan profitabilitas perusahaan bocor akibat birokrasi internal.</p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-orange-100 hover:shadow-md transition-shadow relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1 rounded-bl-lg">Pemborosan</div>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6" style={{ backgroundColor: `${brand.primary}10`, color: brand.primary }}>
-                <Activity className="w-6 h-6" />
+            <div className="flex items-stretch bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="w-2 flex-shrink-0" style={{ backgroundColor: brand.primary }}></div>
+              <div className="p-6 flex-1">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>1 &mdash; Organisasi</span>
+                <p className="text-gray-800 mt-1">Struktur yang tumpang tindih, sistem ukur yang mengukur hal yang salah, sumber daya yang dialokasikan ke tempat yang keliru.</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">SOP Hanya Menjadi Pajangan</h3>
-              <p className="text-gray-600">Anda menyewa konsultan untuk membuat ratusan halaman SOP, namun dokumen itu hanya berdebu di laci. Tidak ada keselarasan dengan kenyataan proses di lapangan.</p>
             </div>
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-yellow-100 hover:shadow-md transition-shadow relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-yellow-50 text-yellow-600 text-xs font-bold px-3 py-1 rounded-bl-lg">Hambatan Eksekusi</div>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6" style={{ backgroundColor: `${brand.primary}10`, color: brand.primary }}>
-                <Users className="w-6 h-6" />
+            <div className="flex items-stretch bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="w-2 flex-shrink-0" style={{ backgroundColor: brand.primary }}></div>
+              <div className="p-6 flex-1">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>2 &mdash; Proses</span>
+                <p className="text-gray-800 mt-1">Pekerjaan yang harus melewati banyak fungsi, tanpa ada satu pun yang benar-benar memilikinya dari awal sampai akhir.</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">Resistensi & Kelumpuhan Tim</h3>
-              <p className="text-gray-600">Inisiatif dari Direksi mati di tangan manajemen menengah. Budaya <i>"kita selalu melakukannya seperti ini"</i> menahan laju inovasi dan mengancam posisi pemimpin proyek.</p>
+            </div>
+            <div className="flex items-stretch bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="w-2 flex-shrink-0" style={{ backgroundColor: brand.accent }}></div>
+              <div className="p-6 flex-1">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>3 &mdash; Individu</span>
+                <p className="text-gray-800 mt-1">Atau memang individunya &mdash; tapi ini ada di urutan paling akhir, setelah ekspektasi yang jelas, alat yang memadai, dan insentif yang selaras.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-3xl mx-auto mt-12 text-center">
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Keempat lapisan ini bertumpuk. Kalau yang bermasalah ada di lapisan atas, perbaikan secanggih apa pun di lapisan bawahnya akan tetap terasa percuma.
+            </p>
+            <p className="text-xl font-bold mt-6" style={{ color: brand.primary }}>
+              Dari empat lapisan tadi &mdash; yang mana yang sebenarnya belum pernah benar-benar diperiksa di organisasi Anda?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* NAMED SERVICES */}
+      <section id="layanan" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: brand.primary }}>
+              Empat Layanan Diagnosa
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Setiap layanan memetakan satu lapisan dari peta kinerja di atas. Anda bisa mulai dari mana saja yang paling terasa mendesak &mdash; atau biarkan diagnosa awal kami yang menentukan urutannya.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>Lapisan 0</span>
+              <h3 className="text-2xl font-bold mt-2 mb-3" style={{ color: brand.primary }}>Diagnosa Strategi</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Memeriksa apakah strategi organisasi Anda valid untuk pasar yang dihadapi, cukup jelas untuk ditindaklanjuti, dan benar-benar diturunkan (cascading) sampai ke sasaran unit dan individu &mdash; bukan berhenti di dalam dek presentasi.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>Lapisan 1</span>
+              <h3 className="text-2xl font-bold mt-2 mb-3" style={{ color: brand.primary }}>Diagnosa &amp; Desain Organisasi</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Memetakan struktur dan akuntabilitas, arsitektur proses bisnis, sistem KPI yang diturunkan dengan benar dari strategi, dan alokasi sumber daya &mdash; supaya organisasi memang dirancang untuk menghasilkan kinerja yang Anda kejar.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>Lapisan 2</span>
+              <h3 className="text-2xl font-bold mt-2 mb-3" style={{ color: brand.primary }}>Diagnosa &amp; Perbaikan Proses Bisnis (BPM)</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Menelusuri efektivitas dan efisiensi proses inti, serah-terima antar fungsi yang sering jadi titik macet, dan memastikan setiap proses punya pemilik yang benar-benar memantau dan memperbaikinya &mdash; bukan berjalan di autopilot.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>Lapisan 3</span>
+              <h3 className="text-2xl font-bold mt-2 mb-3" style={{ color: brand.primary }}>Diagnosa Kapabilitas Individu</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Memeriksa ekspektasi &amp; informasi, umpan balik, alat &amp; lingkungan kerja, insentif &amp; konsekuensi, kesesuaian orang dengan posisinya &mdash; dan, terakhir, kompetensi. Urutan ini disengaja: kompetensi adalah hal terakhir yang kami periksa, bukan yang pertama.
+              </p>
             </div>
           </div>
         </div>
@@ -292,26 +359,19 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Solusi Transformasi End-to-End
+              Kami Mulai dengan Mencari Letak Masalahnya
             </h2>
-            <p className="text-gray-400 text-lg">
-              Kami memetakan proses, menyelaraskan strategi (RJPP), dan menggunakan ilmu perilaku untuk memastikan lapisan manajerial Anda benar-benar menjalankannya.
+            <p className="text-gray-400 text-lg leading-relaxed">
+              Performa adalah firma performance consulting. Kami tidak datang dengan satu solusi favorit untuk dijual ke semua orang. Pekerjaan kami dimulai dengan satu pertanyaan: di antara empat lapisan tadi, di mana persisnya kinerja organisasi Anda berhenti mengalir?
+            </p>
+            <p className="text-gray-400 text-lg leading-relaxed mt-4">
+              Selama lebih dari 16 tahun, ini cara kami bekerja dengan organisasi besar di Indonesia &mdash; Bank Indonesia, OJK, kelompok Pertamina, Pelindo, Pelni, Bank BNI, Bank Danamon, Paragon, Petrosea, United Tractors, dan lainnya &mdash; menggunakan metodologi performance consulting (Rummler-Brache) untuk memetakan kinerja dari strategi sampai individu, sebelum meresepkan apa pun.
             </p>
           </div>
 
           <div className="space-y-6">
-            <div className="group border border-gray-700 rounded-2xl p-8 hover:border-[#4cc9f0] transition-all bg-gray-800/50 hover:bg-gray-800 flex flex-col md:flex-row items-start md:items-center justify-between">
-              <div className="flex items-start md:items-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${brand.secondary}30`, color: brand.accent }}>
-                  <Activity className="w-8 h-8" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">Business Process Architecture (BPM)</h3>
-                  <p className="text-gray-400 max-w-2xl leading-relaxed">
-                    Kami merancang arsitektur operasional 4-level. Memetakan dari <i>Customer Journey</i> hingga level SOP instruksional untuk menghilangkan tumpang tindih peran dan kebocoran proses.
-                  </p>
-                </div>
-              </div>
+            <div className="border-l-2 pl-8 py-2" style={{ borderColor: brand.accent }}>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: brand.accent }}>Setelah Jelas Di Mana Masalahnya, Baru Kami Bicara Solusi</h3>
             </div>
 
             <div className="group border border-gray-700 rounded-2xl p-8 hover:border-[#4cc9f0] transition-all bg-gray-800/50 hover:bg-gray-800 flex flex-col md:flex-row items-start md:items-center justify-between">
@@ -320,9 +380,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                   <Target className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">Perencanaan Strategis (RJPP)</h3>
+                  <h3 className="text-2xl font-bold mb-2">Belum Punya Data yang Bisa Dipercaya?</h3>
                   <p className="text-gray-400 max-w-2xl leading-relaxed">
-                    Menyusun Rencana Jangka Panjang Perusahaan (1-5 tahun). Menyelaraskan target finansial eksekutif dengan kemampuan operasional dan analisis lanskap pasar secara realistis.
+                    Kami bantu bangun dulu sistem KPI dan pengukurannya, supaya ada angka &ldquo;sebelum&rdquo; yang valid untuk dibandingkan nanti.
                   </p>
                 </div>
               </div>
@@ -334,9 +394,23 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                   <Users className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">Pengembangan Organisasi & SDM</h3>
+                  <h3 className="text-2xl font-bold mb-2">Akar Masalahnya Memang Kompetensi?</h3>
                   <p className="text-gray-400 max-w-2xl leading-relaxed">
-                    Manajemen perubahan tidak terjadi secara alami. Kami merancang <i>Assessment Center</i> dan program peningkatan kompetensi agar tim Anda mampu mengeksekusi sistem yang baru.
+                    Kami rancang dan jalankan programnya sendiri, dengan pengukuran dampak yang ditanam sejak awal &mdash; bukan ditempel belakangan.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="group border border-gray-700 rounded-2xl p-8 hover:border-[#4cc9f0] transition-all bg-gray-800/50 hover:bg-gray-800 flex flex-col md:flex-row items-start md:items-center justify-between">
+              <div className="flex items-start md:items-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${brand.secondary}30`, color: brand.accent }}>
+                  <Activity className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">Di Ujungnya, Kami Selalu Kembali Mengukur</h3>
+                  <p className="text-gray-400 max-w-2xl leading-relaxed">
+                    Apakah perbaikan tadi benar-benar menggerakkan angka yang Anda kejar, atau cuma terasa seperti kemajuan. Yang membedakan kami adalah urutan kerjanya &mdash; diagnosa dulu, baru bertindak.
                   </p>
                 </div>
               </div>
@@ -359,28 +433,25 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-  <div className="overflow-hidden">
-    <img src="https://i.ibb.co.com/vHpQcdY/2.png"
-    alt="Rono Jatmiko"
-    className="w-full object-contain max-h-80"
-    />
-  </div>
+              <div className="overflow-hidden">
+                <img src="https://i.ibb.co.com/vHpQcdY/2.png" alt="Rono Jatmiko" className="w-full object-contain max-h-80" />
+              </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Rono Jatmiko</h3>
                 <p className="text-sm font-semibold mb-4" style={{ color: brand.secondary }}>Managing Director</p>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Lulusan Fakultas Psikologi Universitas Indonesia dengan pengalaman lebih dari 16 tahun mendampingi Instansi Pemerintahan, BUMN, Perusahaan Swasta, dan Multinational dalam pengembangan strategi bisnis, perbaikan proses bisnis, dan pengembangan SDM. Sebelum di Performa, Rono pernah memimpin unit Learning & Development di EY Indonesia, salah satu Big Four Firm.
+                  Lulusan Fakultas Psikologi Universitas Indonesia dengan pengalaman lebih dari 16 tahun mendampingi Instansi Pemerintahan, BUMN, Perusahaan Swasta, dan Multinational dalam pengembangan strategi bisnis, perbaikan proses bisnis, dan pengembangan SDM. Sebelum di Performa, Rono pernah memimpin unit Learning &amp; Development di EY Indonesia, salah satu Big Four Firm.
                 </p>
                 <a href="https://www.linkedin.com/in/ronojatmiko/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
-  <LinkedinIcon /> LinkedIn Profile
-</a>
+                  <LinkedinIcon /> LinkedIn Profile
+                </a>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-  <div className="overflow-hidden">
-    <img src="https://i.ibb.co.com/whj2snt9/Untitled-design.png" alt="Rahmi Aulia" className="w-full object-contain max-h-80" />
-  </div>
+              <div className="overflow-hidden">
+                <img src="https://i.ibb.co.com/whj2snt9/Untitled-design.png" alt="Rahmi Aulia" className="w-full object-contain max-h-80" />
+              </div>
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Rahmi Aulia</h3>
                 <p className="text-sm font-semibold mb-4" style={{ color: brand.secondary }}>COO and Senior Consultant</p>
@@ -388,9 +459,43 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
                   Pakar pengembangan kapabilitas organisasi. Ujung tombak dalam memetakan <i>Talent Assessment</i> dan rekayasa sumber daya manusia korporat.
                 </p>
                 <a href="https://www.linkedin.com/in/rahmiauliaelmu/" target="_blank" rel="noreferrer" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-[#0077b5]">
-  <LinkedinIcon /> LinkedIn Profile
-</a>
+                  <LinkedinIcon /> LinkedIn Profile
+                </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONSEQUENCE */}
+      <section className="py-24 bg-gray-900 text-white">
+        <div className="max-w-5xl mx-auto px-6 md:px-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Kalau Siklus Ini Dibiarkan Terus Berulang
+          </h2>
+          <p className="text-gray-400 text-lg text-center max-w-2xl mx-auto mb-16">
+            Dua versi tahun depan. Yang mana yang ingin Anda jalani?
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-800/50 border border-red-900/40 rounded-2xl p-8">
+              <span className="text-xs font-bold uppercase tracking-widest text-red-400">Tanpa Diagnosa</span>
+              <p className="text-gray-300 leading-relaxed mt-4">
+                Anda duduk lagi di rapat yang sama, ditanya pertanyaan yang sama &mdash; apa hasilnya &mdash; dan harus menjawabnya dengan jawaban yang sama seperti tahun ini.
+              </p>
+              <p className="text-gray-300 leading-relaxed mt-4">
+                Tim Anda, setelah inisiatif keempat atau kelima yang tidak benar-benar mengubah apa-apa, mulai berhenti percaya inisiatif berikutnya akan berbeda.
+              </p>
+            </div>
+
+            <div className="bg-gray-800/50 border rounded-2xl p-8" style={{ borderColor: `${brand.accent}50` }}>
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.accent }}>Mulai dari Diagnosa</span>
+              <p className="text-gray-300 leading-relaxed mt-4">
+                Anda datang ke rapat yang sama dengan jawaban yang berbeda &mdash; bukan rencana baru, tapi data yang menunjukkan persis di mana masalahnya.
+              </p>
+              <p className="text-gray-300 leading-relaxed mt-4">
+                Dan bukti bahwa langkah yang diambil benar-benar menggerakkan angkanya.
+              </p>
             </div>
           </div>
         </div>
@@ -400,26 +505,29 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
       <section className="py-24 bg-gray-50 text-center border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">
-            Stop Menebak Dimana Kebocoran Sistem Anda.
+            Langkah Pertama Bukan Mencoba Cara Lain.
           </h2>
-          <p className="text-gray-600 text-lg mb-10">
-            Gunakan alat diagnostik kami. Dapatkan <b>Mini-Report</b> seketika tentang celah operasional Anda, dan jadwalkan 60 menit diagnostik mendalam bersama tim konsultan kami.
+          <p className="text-gray-600 text-lg mb-4">
+            Langkah pertama adalah Sesi Diagnostik Kinerja &mdash; memetakan persis di lapisan mana kinerja organisasi Anda berhenti mengalir, sebelum kami atau siapa pun menyarankan apa-apa.
+          </p>
+          <p className="text-gray-500 text-sm italic mb-10 max-w-xl mx-auto">
+            Tanpa data pembanding, klaim apa pun tentang hasil sebuah intervensi bersifat bias. Pengukuran bukan langkah terakhir dari kerja kinerja &mdash; ia adalah langkah pertama.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <button 
+            <button
               className="px-10 py-5 rounded-lg text-white text-lg font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 inline-flex items-center w-full sm:w-auto justify-center"
               style={{ backgroundColor: brand.secondary }}
               onClick={onStartAssessment}
             >
-              Mulai Diagnostik Sekarang <ArrowRight className="ml-3 w-6 h-6" />
+              Jadwalkan Diagnostik Kinerja <ArrowRight className="ml-3 w-6 h-6" />
             </button>
             <a href="https://wa.me/6287770781950?text=Halo%20Performa%2C%20saya%20ingin%20konsultasi%20lebih%20lanjut"
-  target="_blank"
-  rel="noreferrer"
-  className="px-4 py-2 text-sm font-semibold text-green-600 hover:text-green-700 transition-all flex items-center"
->
-  <WhatsAppIcon /> Hubungi via WhatsApp
-</a>
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 text-sm font-semibold text-green-600 hover:text-green-700 transition-all flex items-center"
+            >
+              <WhatsAppIcon /> Hubungi via WhatsApp
+            </a>
           </div>
         </div>
       </section>
@@ -500,10 +608,16 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
     duration: '',
     attempted: '',
     urgency: '',
-    role: ''
+    role: '',
+    name: '',
+    email: '',
+    company: ''
   });
 
   const [result, setResult] = useState<ResultType | null>(null);
+  const [leadSubmitting, setLeadSubmitting] = useState(false);
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [leadError, setLeadError] = useState('');
 
   const handleStart = () => setStep(1);
 
@@ -518,17 +632,17 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
   };
 
   const calculateResult = (a: typeof answers) => {
-    // ── DIAGNOSIS NAME ──
     let diagnosisName = '';
-    if (a.mainProblem === 'strategic') {
-      diagnosisName = 'Kelumpuhan Arah Strategis';
-    } else if (a.mainProblem === 'organizational') {
-      diagnosisName = 'Sindrom Disfungsi Sistem Organisasi';
+    if (a.mainProblem === 'strategy') {
+      diagnosisName = 'Diagnosa Strategi';
+    } else if (a.mainProblem === 'organization') {
+      diagnosisName = 'Diagnosa & Desain Organisasi';
+    } else if (a.mainProblem === 'process') {
+      diagnosisName = 'Diagnosa & Perbaikan Proses Bisnis (BPM)';
     } else {
-      diagnosisName = 'Krisis Kapabilitas Kepemimpinan';
+      diagnosisName = 'Diagnosa Kapabilitas Individu';
     }
 
-    // ── SEVERITY ──
     let severityScore = 0;
     if (a.duration === 'chronic') severityScore += 2;
     else if (a.duration === 'medium') severityScore += 1;
@@ -552,19 +666,18 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
       severityBg = 'bg-yellow-100 text-yellow-700 border-yellow-200';
     }
 
-    // ── FINDINGS ──
     const findings: string[] = [];
 
-    // Finding 1 — based on main problem
-    if (a.mainProblem === 'strategic') {
-      findings.push('Organisasi Anda beroperasi tanpa kompas strategis yang jelas. Tim bekerja keras namun ke arah yang berbeda-beda, menyebabkan pemborosan sumber daya yang masif.');
-    } else if (a.mainProblem === 'organizational') {
-      findings.push('Sistem internal organisasi Anda tidak berjalan sebagaimana mestinya. Tumpang tindih peran, SOP yang diabaikan, dan KPI yang tidak relevan adalah gejala struktural yang perlu dibenahi dari akar.');
+    if (a.mainProblem === 'strategy') {
+      findings.push('Organisasi Anda kemungkinan menghadapi kesenjangan di lapisan strategi: validitas strategi untuk pasar yang dihadapi, kejelasan strategi agar bisa ditindaklanjuti, atau cascading sasaran yang tidak benar-benar turun sampai ke unit dan individu.');
+    } else if (a.mainProblem === 'organization') {
+      findings.push('Organisasi Anda kemungkinan menghadapi kesenjangan di lapisan organisasi: struktur dan akuntabilitas yang tumpang tindih, arsitektur proses yang tidak dirancang dengan baik, sistem KPI yang tidak diturunkan dengan benar dari strategi, atau alokasi sumber daya yang tidak sejalan dengan prioritas.');
+    } else if (a.mainProblem === 'process') {
+      findings.push('Organisasi Anda kemungkinan menghadapi kesenjangan di lapisan proses: pekerjaan yang tidak mengalir secara efektif atau efisien, serah-terima antar fungsi yang sering macet, atau proses yang berjalan tanpa pemilik yang benar-benar memantau dan memperbaikinya.');
     } else {
-      findings.push('Kapabilitas kepemimpinan di lapisan manajerial menjadi bottleneck utama. Strategi dan sistem sebaik apapun tidak akan berjalan tanpa pemimpin yang mampu mengeksekusi dan menggerakkan tim.');
+      findings.push('Organisasi Anda kemungkinan menghadapi kesenjangan di lapisan individu — namun ini patut diperiksa di urutan terakhir. Ekspektasi yang tidak jelas, umpan balik yang minim, alat kerja yang tidak memadai, atau insentif yang tidak selaras sering jadi penyebab yang lebih mendasar dibanding kompetensi itu sendiri.');
     }
 
-    // Finding 2 — based on duration + attempted
     if (a.duration === 'chronic' && a.attempted === 'failed') {
       findings.push('Masalah ini bersifat kronis dan telah berulang kali dicoba diselesaikan tanpa hasil yang bertahan. Ini mengindikasikan bahwa solusi yang digunakan selama ini hanya menyentuh gejala, bukan akar masalah.');
     } else if (a.attempted === 'failed') {
@@ -575,7 +688,6 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
       findings.push('Belum ada inisiatif perbaikan yang terstruktur. Ini sebenarnya posisi yang baik — Anda bisa memulai dengan pendekatan yang tepat tanpa harus membongkar sistem yang salah terlebih dahulu.');
     }
 
-    // Finding 3 — based on urgency + role
     if (a.urgency === 'financial') {
       findings.push('Dampak masalah ini sudah menyentuh aspek finansial dan reputasi. Setiap hari tanpa intervensi yang tepat adalah biaya yang terus bertambah.');
     } else if (a.urgency === 'operational') {
@@ -584,13 +696,12 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
       findings.push('Masalah ini baru mulai mempengaruhi KPI. Ini adalah momentum terbaik untuk bertindak — lebih mudah dan lebih murah menyelesaikannya sebelum menjadi krisis.');
     }
 
-    // ── TRACK ──
     let track = '';
-    if (a.mainProblem === 'strategic') track = 'Perencanaan Strategis & RJPP';
-    else if (a.mainProblem === 'organizational') track = 'Arsitektur Proses & Organisasi';
-    else track = 'Pengembangan Kepemimpinan & SDM';
+    if (a.mainProblem === 'strategy') track = 'Diagnosa Strategi';
+    else if (a.mainProblem === 'organization') track = 'Diagnosa & Desain Organisasi';
+    else if (a.mainProblem === 'process') track = 'Diagnosa & Perbaikan Proses Bisnis (BPM)';
+    else track = 'Diagnosa Kapabilitas Individu';
 
-    // ── ROLE-BASED CLOSING ──
     let closing = '';
     if (a.role === 'clevel') {
       closing = 'Sebagai pengambil keputusan, Anda berada di posisi terbaik untuk menginisiasi perubahan ini. Sesi diagnostik 60 menit bersama tim kami dirancang khusus untuk level eksekutif — fokus pada keputusan strategis, bukan teknis.';
@@ -601,14 +712,26 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
     }
 
     setResult({
-  brand: diagnosisName,
-  track,
-  report: [findings[0], findings[1], findings[2], closing],
-  isUrgent,
-  description: `${severity}|${severityBg}|${a.mainProblem}`
-});
+      brand: diagnosisName,
+      track,
+      report: [findings[0], findings[1], findings[2], closing],
+      isUrgent,
+      description: `${severity}|${severityBg}|${a.mainProblem}`
+    });
 
-    setTimeout(() => setStep(totalSteps + 1), 500);
+    setStep(totalSteps + 1);
+  };
+
+  const buildCalendlyUrl = () => {
+    const base = 'https://calendly.com/performaconsulting/diagnostic';
+    const [severity] = (result?.description || '').split('|');
+    const params = new URLSearchParams();
+    if (answers.name) params.set('name', answers.name);
+    if (answers.email) params.set('email', answers.email);
+    if (answers.company) params.set('a1', answers.company);
+    if (result?.brand) params.set('a2', result.brand);
+    if (severity) params.set('a3', severity);
+    return `${base}?${params.toString()}`;
   };
 
   const Button: React.FC<ButtonProps> = ({ children, onClick, active, variant = 'outline' }) => {
@@ -657,14 +780,17 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
               <h2 className="text-2xl font-bold mb-2 text-gray-900">Apa yang paling menghambat pertumbuhan organisasi Anda saat ini?</h2>
               <p className="text-gray-500 text-sm mb-6">Pilih yang paling mendekati kondisi Anda.</p>
               <div className="space-y-4">
-                <Button active={answers.mainProblem === 'strategic'} onClick={() => handleAnswer('mainProblem', 'strategic')}>
-                  <span className="flex items-center text-sm md:text-base"><Target className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Arah strategis tidak jelas — target 1-5 tahun kabur atau tidak realistis.</span>
+                <Button active={answers.mainProblem === 'strategy'} onClick={() => handleAnswer('mainProblem', 'strategy')}>
+                  <span className="flex items-center text-sm md:text-base"><Target className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Strategi tidak jelas — target 1-5 tahun kabur, atau tidak benar-benar turun ke unit dan individu.</span>
                 </Button>
-                <Button active={answers.mainProblem === 'organizational'} onClick={() => handleAnswer('mainProblem', 'organizational')}>
-                  <span className="flex items-center text-sm md:text-base"><Activity className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Sistem & proses berantakan — struktur, SOP, KPI, atau job desc tidak berjalan.</span>
+                <Button active={answers.mainProblem === 'organization'} onClick={() => handleAnswer('mainProblem', 'organization')}>
+                  <span className="flex items-center text-sm md:text-base"><Building2 className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Struktur &amp; sistem berantakan — akuntabilitas tumpang tindih, KPI tidak diturunkan dengan benar, sumber daya salah alokasi.</span>
+                </Button>
+                <Button active={answers.mainProblem === 'process'} onClick={() => handleAnswer('mainProblem', 'process')}>
+                  <span className="flex items-center text-sm md:text-base"><Activity className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Proses macet — pekerjaan lambat, serah-terima antar fungsi sering stuck, tidak ada yang benar-benar memilikinya.</span>
                 </Button>
                 <Button active={answers.mainProblem === 'people'} onClick={() => handleAnswer('mainProblem', 'people')}>
-                  <span className="flex items-center text-sm md:text-base"><Users className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Orang & kepemimpinan — manajer tidak efektif, tim tidak berkembang.</span>
+                  <span className="flex items-center text-sm md:text-base"><Users className="w-5 h-5 mr-3 text-gray-400 flex-shrink-0" /> Orang &amp; kepemimpinan — manajer tidak efektif, tim tidak berkembang.</span>
                 </Button>
               </div>
             </div>
@@ -702,7 +828,7 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
               <h2 className="text-2xl font-bold mb-2 text-gray-900">Seberapa kritis dampaknya sekarang?</h2>
               <p className="text-gray-500 text-sm mb-6">Ini menentukan tingkat urgensi intervensi yang kami rekomendasikan.</p>
               <div className="space-y-4">
-                <Button active={answers.urgency === 'kpi'} onClick={() => handleAnswer('urgency', 'kpi')}>Mulai mempengaruhi pencapaian target & KPI perusahaan.</Button>
+                <Button active={answers.urgency === 'kpi'} onClick={() => handleAnswer('urgency', 'kpi')}>Mulai mempengaruhi pencapaian target &amp; KPI perusahaan.</Button>
                 <Button active={answers.urgency === 'operational'} onClick={() => handleAnswer('urgency', 'operational')}>Sudah mengganggu operasional harian secara nyata.</Button>
                 <Button active={answers.urgency === 'financial'} onClick={() => handleAnswer('urgency', 'financial')}>Sudah berdampak langsung pada finansial atau reputasi perusahaan.</Button>
               </div>
@@ -728,14 +854,74 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
             </div>
           )}
 
-          {step === 6 && result && (() => {
+          {step === 6 && result && (
+            <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-100 text-left">
+              <h2 className="text-2xl font-bold mb-2 text-gray-900">Hampir Selesai</h2>
+              <p className="text-gray-500 text-sm mb-6">Isi data di bawah untuk melihat hasil diagnostik Anda dan menjadwalkan sesi konsultasi gratis.</p>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Nama Lengkap <span className="text-red-500">*</span></label>
+                  <input
+                    type="text"
+                    value={answers.name}
+                    onChange={(e) => setAnswers({ ...answers, name: e.target.value })}
+                    placeholder="Nama lengkap Anda"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-400 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email <span className="text-red-500">*</span></label>
+                  <input
+                    type="email"
+                    value={answers.email}
+                    onChange={(e) => setAnswers({ ...answers, email: e.target.value })}
+                    placeholder="email@perusahaan.com"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-400 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Perusahaan</label>
+                  <input
+                    type="text"
+                    value={answers.company}
+                    onChange={(e) => setAnswers({ ...answers, company: e.target.value })}
+                    placeholder="Nama perusahaan Anda"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-blue-400 transition-colors"
+                  />
+                </div>
+              </div>
+              {leadError && <p className="text-red-500 text-sm mt-3">{leadError}</p>}
+              <button
+                disabled={leadSubmitting}
+                onClick={() => {
+                  if (!answers.name.trim() || !answers.email.trim()) {
+                    setLeadError('Nama dan email wajib diisi.');
+                    return;
+                  }
+                  setLeadError('');
+                  setLeadSubmitting(true);
+                  setTimeout(() => {
+                    setLeadSubmitting(false);
+                    setLeadSubmitted(true);
+                    setStep(7);
+                  }, 400);
+                }}
+                className="mt-6 w-full px-6 py-4 rounded-lg text-white font-semibold flex items-center justify-center transition-all"
+                style={{ backgroundColor: brand.secondary, opacity: leadSubmitting ? 0.7 : 1 }}
+              >
+                {leadSubmitting ? 'Memproses...' : <>Lihat Hasil Diagnostik <ArrowRight className="w-5 h-5 ml-2" /></>}
+              </button>
+            </div>
+          )}
+
+          {step === 7 && result && (() => {
             const [severity, severityBg, mainProblem] = (result.description || '').split('|');
             return (
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 animate-in zoom-in-95 duration-500 text-left">
                 <div className="py-6 px-8 bg-gray-900 border-b border-gray-800 flex justify-between items-center">
                   <div>
                     <h3 className="text-xs font-bold uppercase tracking-widest text-[#4cc9f0] mb-1">Hasil Diagnostik Organisasi</h3>
-                    <h2 className={`text-2xl font-bold text-white`}>{result.brand}</h2>
+                    <h2 className="text-2xl font-bold text-white">{result.brand}</h2>
                   </div>
                   <span className={`text-xs font-bold px-3 py-1 rounded-full border ${severityBg} ${result.isUrgent ? 'animate-pulse' : ''}`}>
                     {severity}
@@ -766,51 +952,64 @@ const AssessmentView: React.FC<AssessmentViewProps> = ({ onBack }) => {
                   </ul>
 
                   <div className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-6">
-  <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">Fokus Intervensi yang Disarankan</p>
-  <p className="text-blue-800 text-lg font-bold mb-4">{result.track}</p>
-  <div className="border-t border-blue-200 pt-4">
-    <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-3">Dalam sesi diagnostik 60 menit, kita akan memetakan:</p>
-    <ul className="space-y-2">
-      {mainProblem === 'strategic' ? (
-        <>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya arah strategis Anda tidak selaras dengan kapabilitas organisasi</li>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah RJPP Anda realistis atau perlu direkonstruksi ulang</li>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Langkah konkret pertama yang bisa dieksekusi dalam 30-90 hari ke depan</li>
-        </>
-      ) : mainProblem === 'organizational' ? (
-        <>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya proses Anda bocor — apakah di struktur, SOP, KPI, atau job desc</li>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Siapa yang bertanggung jawab atas tiap bottleneck dan bagaimana membenahi akuntabilitasnya</li>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Estimasi waktu dan effort intervensi yang realistis untuk skala organisasi Anda</li>
-        </>
-      ) : (
-        <>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya gap kapabilitas kepemimpinan yang menghambat eksekusi tim</li>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah solusinya di level kompetensi, sistem, atau keduanya</li>
-          <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Program intervensi yang paling efisien untuk skala dan urgensi organisasi Anda</li>
-        </>
-      )}
-    </ul>
-  </div>
-  <div className="mt-4 pt-4 border-t border-blue-200 flex items-center space-x-4">
-    <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> Gratis</span>
-    <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> Online via Zoom</span>
-    <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> 60 Menit</span>
-  </div>
-</div>
+                    <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-1">Fokus Intervensi yang Disarankan</p>
+                    <p className="text-blue-800 text-lg font-bold mb-4">{result.track}</p>
+                    <div className="border-t border-blue-200 pt-4">
+                      <p className="text-xs font-bold text-blue-900 uppercase tracking-wider mb-3">Dalam sesi diagnostik 60 menit, kita akan memetakan:</p>
+                      <ul className="space-y-2">
+                        {mainProblem === 'strategy' ? (
+                          <>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya arah strategis Anda tidak selaras dengan kapabilitas organisasi</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah cascading sasaran sudah benar-benar turun sampai ke unit dan individu</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Langkah konkret pertama yang bisa dieksekusi dalam 30-90 hari ke depan</li>
+                          </>
+                        ) : mainProblem === 'organization' ? (
+                          <>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya struktur dan akuntabilitas Anda tumpang tindih</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah sistem KPI sudah diturunkan dengan benar dari strategi perusahaan</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Estimasi waktu dan effort intervensi yang realistis untuk skala organisasi Anda</li>
+                          </>
+                        ) : mainProblem === 'process' ? (
+                          <>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya proses Anda macet dan siapa yang seharusnya memilikinya</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Serah-terima antar fungsi mana yang paling sering jadi titik macet</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Bagaimana membangun sistem monitoring proses yang tidak berjalan di autopilot</li>
+                          </>
+                        ) : (
+                          <>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Apakah ekspektasi, umpan balik, dan insentif sudah cukup jelas sebelum bicara kompetensi</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Di mana persisnya gap kapabilitas kepemimpinan yang menghambat eksekusi tim</li>
+                            <li className="flex items-start text-sm text-blue-800"><CheckCircle className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />Program intervensi yang paling efisien untuk skala dan urgensi organisasi Anda</li>
+                          </>
+                        )}
+                      </ul>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-blue-200 flex items-center space-x-4">
+                      <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> Gratis</span>
+                      <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> Online via Zoom</span>
+                      <span className="flex items-center text-xs font-semibold text-blue-900"><CheckCircle className="w-4 h-4 mr-1 text-green-600" /> 60 Menit</span>
+                    </div>
+                  </div>
 
                   <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-8">
                     <p className="text-gray-700 text-sm leading-relaxed">{result.report[3]}</p>
                   </div>
 
-                  <Button variant="solid" onClick={() => window.open('https://calendly.com/performaconsulting/diagnostic', '_blank')}>
+                  <a
+                    href={buildCalendlyUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full px-6 py-4 rounded-lg text-white font-semibold flex items-center justify-center transition-all"
+                    style={{ backgroundColor: brand.secondary }}
+                  >
                     Jadwalkan Sesi Diagnostik Online 60-Menit (Gratis) <ChevronRight className="w-5 h-5 ml-1" />
-                  </Button>
+                  </a>
                   <p className="text-xs text-center text-gray-400 mt-3">Sesi ini dirancang khusus untuk mendiskusikan temuan di atas dan memetakan langkah konkret bersama konsultan kami.</p>
                 </div>
               </div>
             );
           })()}
+
         </div>
       </main>
     </div>
@@ -824,7 +1023,6 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'assessment'>('home');
 
   useEffect(() => {
-    // Inject Font Montserrat
     const fontLink = document.createElement('link');
     fontLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap';
     fontLink.rel = 'stylesheet';
