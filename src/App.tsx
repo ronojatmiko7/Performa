@@ -79,15 +79,11 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all shadow-sm">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
           <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-            <img 
-              src={logoUtama} 
-              alt="Performa Internasional" 
-              className="h-16 md:h-20 object-contain"
-              onError={(e) => handleImageError(e, 'navbar-fallback')}
+            <img
+              src="https://i.ibb.co.com/qMHcWzjh/Logo-Only-performa.png"
+              alt="Performa International Indonesia"
+              style={{ height: "64px", width: "auto" }}
             />
-            <span id="navbar-fallback" className="hidden text-2xl font-bold tracking-tight" style={{ color: brand.primary }}>
-              Performa<span className="font-light">Internasional</span>
-            </span>
           </div>
           
           <div className="hidden lg:flex space-x-8 items-center text-sm font-semibold text-gray-500 tracking-wide">
