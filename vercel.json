@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/insights/:path*",
-      "destination": "https://performa-insights.vercel.app/insights/:path*"
-    }
-  ]
-}
