@@ -109,12 +109,12 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               style={{ backgroundColor: "#005073" }}>
               WhatsApp
             </a>
-            <a href="https://calendly.com/performaconsulting/diagnostic"
-              target="_blank" rel="noopener noreferrer"
+            <button
               className="text-sm font-medium px-4 py-2 rounded-full border-2 transition-colors"
-              style={{ borderColor: "#005073", color: "#005073" }}>
+              style={{ borderColor: "#005073", color: "#005073" }}
+              onClick={onStartAssessment}>
               Diagnostik Organisasi
-            </a>
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -148,12 +148,12 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               style={{ backgroundColor: "#005073" }}>
               WhatsApp
             </a>
-            <a href="https://calendly.com/performaconsulting/diagnostic"
-              target="_blank" rel="noopener noreferrer"
+            <button
               className="text-sm font-medium px-4 py-2 rounded-full border-2 text-center"
-              style={{ borderColor: "#005073", color: "#005073" }}>
+              style={{ borderColor: "#005073", color: "#005073" }}
+              onClick={onStartAssessment}>
               Diagnostik Organisasi
-            </a>
+            </button>
           </div>
         )}
       </nav>
@@ -209,7 +209,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <a href={insightsURL} className="group cursor-pointer">
+            <a href={insightsURL} className="group cursor-pointer block">
               <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
                 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
               </div>
@@ -220,7 +220,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               </span>
             </a>
 
-            <a href={insightsURL} className="group cursor-pointer">
+            <a href={insightsURL} className="group cursor-pointer block">
               <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
                 <img src="https://images.unsplash.com/photo-1454165833772-d99626a4407d?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
               </div>
@@ -231,7 +231,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               </span>
             </a>
 
-            <a href={insightsURL} className="group cursor-pointer">
+            <a href={insightsURL} className="group cursor-pointer block">
               <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
                 <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
               </div>
@@ -579,12 +579,12 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               className="text-sm text-gray-500 hover:text-[#005073] transition-colors">
               info@performa.co.id
             </a>
-            <a href="https://calendly.com/performaconsulting/diagnostic"
-              target="_blank" rel="noopener noreferrer"
+            <button
               className="text-sm px-4 py-2 rounded-full border-2 text-center transition-colors"
-              style={{ borderColor: "#005073", color: "#005073" }}>
+              style={{ borderColor: "#005073", color: "#005073" }}
+              onClick={onStartAssessment}>
               Diagnostik Organisasi
-            </a>
+            </button>
           </div>
         </div>
 
