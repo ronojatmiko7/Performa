@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   ArrowRight, Activity, Target, Users, CheckCircle2,
   ChevronRight, Building2, Briefcase,
-  ArrowLeft, CheckCircle, AlertTriangle, BookOpen, FileText
+  ArrowLeft, CheckCircle, AlertTriangle
 } from 'lucide-react';
 
 // ==========================================
@@ -43,7 +43,106 @@ const brand = {
 };
 
 const logoUtama = "https://i.ibb.co.com/1f7TdvLj/performa-only-logo.jpg";
-const insightsURL = "https://insights.performa.co.id";
+const insightsURL = "https://insights.performa.co.id/insights";
+const insightsFeedURL = "https://insights.performa.co.id/posts.json";
+
+interface InsightPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  tag: string | null;
+  url: string;
+}
+
+// Shown until the live feed answers, and kept if it never does.
+const fallbackInsights: InsightPost[] = [
+  {
+    slug: "diagnosis-kinerja-organisasi",
+    title: "Diagnosis Kinerja Organisasi: Empat Lapisan Tempat Kinerja Macet",
+    excerpt: "Kinerja organisasi jarang macet di satu tempat. Ia macet di salah satu dari empat lapisan: strategi, organisasi, proses, atau individu. Ini cara membacanya, berurutan.",
+    date: "2026-10-03",
+    tag: "Diagnosis Kinerja",
+    url: "https://insights.performa.co.id/insights/diagnosis-kinerja-organisasi",
+  },
+  {
+    slug: "sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan",
+    title: "SOP Adalah: Pengertian, Cara Membuat, dan Kenapa Tidak Dijalankan",
+    excerpt: "SOP adalah prosedur tertulis agar pekerjaan yang sama menghasilkan hasil yang sama, siapa pun yang mengerjakannya. Ini isinya, cara membuatnya, contohnya, dan kenapa banyak SOP berhenti di laci.",
+    date: "2026-10-03",
+    tag: "SOP",
+    url: "https://insights.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan",
+  },
+  {
+    slug: "kenapa-kpi-gagal-dan-ini-bukan-salah-karyawan-anda",
+    title: "Kenapa KPI Gagal? (Dan Ini Bukan Salah Karyawan Anda)",
+    excerpt: "Ketika KPI tidak tercapai, kebanyakan perusahaan mengganti orangnya, bukan sistemnya. Ini tiga akar masalah KPI yang paling sering diabaikan.",
+    date: "2026-06-09",
+    tag: "KPI",
+    url: "https://insights.performa.co.id/insights/kenapa-kpi-gagal-dan-ini-bukan-salah-karyawan-anda",
+  },
+];
+
+const InsightsPreview = () => {
+  const [posts, setPosts] = useState<InsightPost[]>(fallbackInsights);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(insightsFeedURL)
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data: InsightPost[]) => {
+        if (!cancelled && Array.isArray(data) && data.length > 0) {
+          setPosts(data.slice(0, 3));
+        }
+      })
+      .catch(() => {
+        /* keep the fallback list */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return (
+    <section id="insights" className="py-24 bg-white border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Strategic Insights</h2>
+            <p className="text-gray-600 max-w-xl text-lg">Laporan mendalam dan strategi praktis bagi para pemimpin korporasi di Indonesia.</p>
+          </div>
+          <a href={insightsURL} className="text-[#107dac] font-bold flex items-center mt-6 md:mt-0 hover:underline">
+            Lihat Semua Artikel <ChevronRight className="w-5 h-5 ml-1" />
+          </a>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <a key={post.slug} href={post.url} className="group cursor-pointer block">
+              <div
+                className="h-48 rounded-xl mb-6 p-6 flex items-end"
+                style={{ backgroundColor: "#005073" }}
+              >
+                {post.tag && (
+                  <span className="text-xs font-bold text-white/80 uppercase tracking-widest">
+                    {post.tag}
+                  </span>
+                )}
+              </div>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-[#107dac] transition-colors leading-tight">
+                {post.title}
+              </h3>
+              <p className="text-gray-500 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                {new Date(post.date).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" })}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const LinkedinIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
@@ -98,7 +197,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               className="text-sm font-medium text-gray-600 hover:text-[#005073] transition-colors">
               Konsultan Kami
             </a>
-            <a href="https://www.performa.co.id/insights"
+            <a href={insightsURL}
               className="text-sm font-medium transition-colors"
               style={{ color: "#005073", fontWeight: 600 }}>
               Insights
@@ -137,7 +236,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               className="text-sm font-medium text-gray-700" onClick={() => setMenuOpen(false)}>
               Konsultan Kami
             </a>
-            <a href="https://www.performa.co.id/insights"
+            <a href={insightsURL}
               className="text-sm font-semibold" style={{ color: "#005073" }}
               onClick={() => setMenuOpen(false)}>
               Insights
@@ -196,54 +295,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
       </section>
 
       {/* SECTION INSIGHTS PREVIEW */}
-      <section id="insights" className="py-24 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Strategic Insights</h2>
-              <p className="text-gray-600 max-w-xl text-lg">Laporan mendalam dan strategi praktis bagi para pemimpin korporasi di Indonesia.</p>
-            </div>
-            <a href={insightsURL} className="text-[#107dac] font-bold flex items-center mt-6 md:mt-0 hover:underline">
-              Lihat Semua Artikel <ChevronRight className="w-5 h-5 ml-1" />
-            </a>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <a href={insightsURL} className="group cursor-pointer block">
-              <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
-              </div>
-              <h4 className="text-xl font-bold mb-2 group-hover:text-[#107dac] transition-colors leading-tight">Mengapa 70% Inisiatif RJPP di BUMN Mandek di Tingkat Manajerial</h4>
-              <p className="text-gray-500 text-sm mb-4 line-clamp-2">Laporan eksklusif Performa mengenai tantangan eksekusi strategi di lapisan menengah BUMN dan cara mengatasinya...</p>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center italic">
-                <FileText className="w-3 h-3 mr-1" /> Whitepaper
-              </span>
-            </a>
-
-            <a href={insightsURL} className="group cursor-pointer block">
-              <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1454165833772-d99626a4407d?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
-              </div>
-              <h4 className="text-xl font-bold mb-2 group-hover:text-[#107dac] transition-colors leading-tight">Memangkas Waktu Siklus (Cycle Time) melalui Restrukturisasi BPM</h4>
-              <p className="text-gray-500 text-sm mb-4 line-clamp-2">Bagaimana satu perubahan kecil dalam arsitektur proses bisnis dapat menghemat biaya operasional hingga 25%...</p>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center italic">
-                <CheckCircle className="w-3 h-3 mr-1" /> Case Study
-              </span>
-            </a>
-
-            <a href={insightsURL} className="group cursor-pointer block">
-              <div className="h-48 rounded-xl overflow-hidden mb-6 bg-gray-100">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="BPM Insight" />
-              </div>
-              <h4 className="text-xl font-bold mb-2 group-hover:text-[#107dac] transition-colors leading-tight">Silo Departemen: Pembunuh Tersembunyi dalam Perusahaan Raksasa</h4>
-              <p className="text-gray-500 text-sm mb-4 line-clamp-2">Panduan praktis bagi Direktur Operasional untuk meruntuhkan tembok birokrasi antar divisi tanpa gesekan internal...</p>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center italic">
-                <BookOpen className="w-3 h-3 mr-1" /> Leadership Insight
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
+      <InsightsPreview />
 
       {/* THE PROBLEM / WHY IT KEEPS HAPPENING */}
       <section id="masalah" className="py-24 bg-gray-50">
@@ -561,7 +613,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               className="text-sm text-gray-500 hover:text-[#005073] transition-colors">
               Konsultan Kami
             </a>
-            <a href="https://www.performa.co.id/insights"
+            <a href={insightsURL}
               className="text-sm text-gray-500 hover:text-[#005073] transition-colors">
               Insights
             </a>
