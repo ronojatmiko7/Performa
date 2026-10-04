@@ -219,12 +219,6 @@ const jasaRaharjaTestimonials: Testimonial[] = [
     role: "Peserta pelatihan",
     company: "Jasa Raharja, Cabang Tangerang",
   },
-  {
-    quote: "Kerangka kerja yang diberikan (seperti GRAND dan RASA) sangat relevan untuk langsung dipraktikkan oleh petugas di lapangan.",
-    name: "Rama Adhitya Budhiarto",
-    role: "Peserta pelatihan",
-    company: "Jasa Raharja, Cabang Tangerang",
-  },
 ];
 
 const TestimonialCard = ({ t }: { t: Testimonial }) => (
@@ -256,43 +250,26 @@ const TestimonialsSection = () => (
         </p>
       </div>
 
-      {/* Jasa Raharja: angka dan kutipan */}
-      <div className="rounded-3xl p-8 md:p-12 mb-16" style={{ backgroundColor: brand.primary }}>
-        <div className="max-w-3xl mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.accent }}>
-            Jasa Raharja &middot; Juni 2026
-          </span>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mt-3 mb-3">
-            Petugas Belajar Menghadapi Keluarga Korban Kecelakaan
-          </h3>
-          <p className="text-white/80 leading-relaxed">
-            Program komunikasi empatik untuk petugas Kantor Wilayah Banten dan Cabang Tangerang, dua sesi pada 17 dan 18 Juni 2026.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-3 gap-6 mb-10">
+      {/* Jasa Raharja, Juni 2026: angka */}
+      <div className="max-w-4xl mx-auto mb-16">
+        <p className="text-center text-sm font-bold uppercase tracking-widest mb-6" style={{ color: brand.secondary }}>
+          Jasa Raharja &middot; Program komunikasi empatik untuk petugas, Juni 2026
+        </p>
+        <div className="grid sm:grid-cols-3 gap-6">
           {jasaRaharjaStats.map((stat) => (
-            <div key={stat.label} className="rounded-2xl bg-white/10 p-6">
-              <div className="text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
-              <div className="text-sm text-white/80 mt-2">{stat.label}</div>
+            <div key={stat.label} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl font-bold" style={{ color: brand.primary }}>{stat.value}</div>
+              <div className="text-sm text-gray-500 mt-2">{stat.label}</div>
             </div>
           ))}
         </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {jasaRaharjaTestimonials.map((t) => (
-            <TestimonialCard key={`${t.name}-${t.company}`} t={t} />
-          ))}
-        </div>
-
-        <p className="text-xs text-white/60 mt-8">
-          Skor berasal dari tes pengetahuan 10 soal sebelum dan sesudah sesi, diambil pada sesi yang sama; 52 dari 67 peserta mencapai nilai penuh setelahnya. Penilaian peserta adalah rata-rata empat pertanyaan evaluasi pada skala 1 sampai 5.
+        <p className="text-xs text-gray-400 text-center mt-4">
+          Kantor Wilayah Banten dan Cabang Tangerang, 17 dan 18 Juni 2026. Skor berasal dari tes pengetahuan 10 soal sebelum dan sesudah sesi, diambil pada sesi yang sama; 52 dari 67 peserta mencapai nilai penuh setelahnya. Penilaian peserta adalah rata-rata empat pertanyaan evaluasi pada skala 1 sampai 5.
         </p>
       </div>
 
-      {/* Peserta dari klien lain */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((t) => (
+        {[...jasaRaharjaTestimonials, ...testimonials].map((t) => (
           <TestimonialCard key={`${t.name}-${t.company}`} t={t} />
         ))}
       </div>
