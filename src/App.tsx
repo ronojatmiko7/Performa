@@ -151,7 +151,7 @@ interface Testimonial {
   company: string;
 }
 
-// Kutipan dari formulir umpan balik peserta pelatihan Performa (2022 - 2024).
+// Kutipan dari formulir umpan balik peserta pelatihan Performa.
 // Teks dikutip apa adanya; hanya ejaan, huruf kapital, dan tanda baca yang dirapikan.
 const testimonials: Testimonial[] = [
   {
@@ -273,10 +273,6 @@ const TestimonialsSection = () => (
           <TestimonialCard key={`${t.name}-${t.company}`} t={t} />
         ))}
       </div>
-
-      <p className="text-center text-xs text-gray-400 mt-10">
-        Kutipan dari formulir umpan balik peserta pelatihan Performa, 2022 &ndash; 2026.
-      </p>
     </div>
   </section>
 );
