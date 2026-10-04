@@ -192,6 +192,52 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+// Jasa Raharja, Kantor Wilayah Banten dan Cabang Tangerang, 17 dan 18 Juni 2026.
+// Angka dihitung dari 67 respons peserta; kutipan diambil apa adanya dari kolom komentar evaluasi.
+const jasaRaharjaStats = [
+  { value: "67", label: "Peserta dalam 2 sesi" },
+  { value: "7,2 \u2192 9,6", label: "Skor tes pengetahuan (dari 10), sebelum dan sesudah sesi" },
+  { value: "4,8 / 5", label: "Penilaian peserta terhadap pelatihan" },
+];
+
+const jasaRaharjaTestimonials: Testimonial[] = [
+  {
+    quote: "Simulasi penanganan keluarga korban memberikan gambaran nyata yang sangat membantu kami dalam menyelaraskan empati dengan ketegasan administratif di lapangan.",
+    name: "Shanty W.",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Cabang Tangerang",
+  },
+  {
+    quote: "Hal yang paling berkesan adalah pemahaman bahwa respons keluarga yang terlihat bingung atau lambat bukanlah hambatan, tetapi bagian dari proses duka yang normal. Ini membantu saya lebih sabar dan tidak terburu-buru dalam menyampaikan informasi.",
+    name: "Risa N.",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Kantor Wilayah Banten",
+  },
+  {
+    quote: "Pelatihan sangat relevan dengan pekerjaan saya, dan banyak hal yang menurut kita biasa saja tetapi ternyata salah.",
+    name: "Indah H.",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Cabang Tangerang",
+  },
+];
+
+const TestimonialCard = ({ t }: { t: Testimonial }) => (
+  <figure
+    className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col"
+    style={{ borderTop: `4px solid ${brand.secondary}` }}
+  >
+    <Quote className="w-8 h-8 mb-4" style={{ color: brand.accent }} aria-hidden="true" />
+    <blockquote className="text-gray-700 leading-relaxed flex-grow">
+      &ldquo;{t.quote}&rdquo;
+    </blockquote>
+    <figcaption className="mt-6 pt-6 border-t border-gray-100">
+      <div className="font-bold text-gray-900">{t.name}</div>
+      <div className="text-sm text-gray-500">{t.role}</div>
+      <div className="text-sm font-semibold" style={{ color: brand.secondary }}>{t.company}</div>
+    </figcaption>
+  </figure>
+);
+
 const TestimonialsSection = () => (
   <section id="testimoni" className="py-24 bg-gray-50 border-t border-gray-100">
     <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -200,32 +246,36 @@ const TestimonialsSection = () => (
           Kata Peserta Pelatihan Kami
         </h2>
         <p className="text-gray-600 text-lg">
-          Umpan balik tertulis dari peserta di OJK, Bank Sinarmas, PT PP Infrastruktur, PT Solusi Bangun Indonesia, dan perusahaan lain.
+          Umpan balik tertulis dari peserta di Jasa Raharja, OJK, Bank Sinarmas, PT PP Infrastruktur, PT Solusi Bangun Indonesia, dan perusahaan lain.
+        </p>
+      </div>
+
+      {/* Jasa Raharja, Juni 2026: angka */}
+      <div className="max-w-4xl mx-auto mb-16">
+        <p className="text-center text-sm font-bold uppercase tracking-widest mb-6" style={{ color: brand.secondary }}>
+          Jasa Raharja &middot; Program komunikasi empatik untuk petugas, Juni 2026
+        </p>
+        <div className="grid sm:grid-cols-3 gap-6">
+          {jasaRaharjaStats.map((stat) => (
+            <div key={stat.label} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="text-3xl font-bold" style={{ color: brand.primary }}>{stat.value}</div>
+              <div className="text-sm text-gray-500 mt-2">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-gray-400 text-center mt-4">
+          Kantor Wilayah Banten dan Cabang Tangerang, 17 dan 18 Juni 2026. Skor berasal dari tes pengetahuan 10 soal sebelum dan sesudah sesi, diambil pada sesi yang sama; 52 dari 67 peserta mencapai nilai penuh setelahnya. Penilaian peserta adalah rata-rata empat pertanyaan evaluasi pada skala 1 sampai 5.
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((t) => (
-          <figure
-            key={`${t.name}-${t.company}`}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col"
-            style={{ borderTop: `4px solid ${brand.secondary}` }}
-          >
-            <Quote className="w-8 h-8 mb-4" style={{ color: brand.accent }} aria-hidden="true" />
-            <blockquote className="text-gray-700 leading-relaxed flex-grow">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-6 pt-6 border-t border-gray-100">
-              <div className="font-bold text-gray-900">{t.name}</div>
-              <div className="text-sm text-gray-500">{t.role}</div>
-              <div className="text-sm font-semibold" style={{ color: brand.secondary }}>{t.company}</div>
-            </figcaption>
-          </figure>
+        {[...jasaRaharjaTestimonials, ...testimonials].map((t) => (
+          <TestimonialCard key={`${t.name}-${t.company}`} t={t} />
         ))}
       </div>
 
       <p className="text-center text-xs text-gray-400 mt-10">
-        Dikutip dari formulir umpan balik peserta pelatihan Performa, 2022 &ndash; 2024.
+        Kutipan dari formulir umpan balik peserta pelatihan Performa, 2022 &ndash; 2026.
       </p>
     </div>
   </section>
