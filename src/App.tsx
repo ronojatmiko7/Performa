@@ -192,6 +192,58 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+// Jasa Raharja, Kantor Wilayah Banten dan Cabang Tangerang, 17 dan 18 Juni 2026.
+// Angka dihitung dari 67 respons peserta; kutipan diambil apa adanya dari kolom komentar evaluasi.
+const jasaRaharjaStats = [
+  { value: "67", label: "Peserta dalam 2 sesi" },
+  { value: "7,2 \u2192 9,6", label: "Skor tes pengetahuan (dari 10), sebelum dan sesudah sesi" },
+  { value: "4,8 / 5", label: "Penilaian peserta terhadap pelatihan" },
+];
+
+const jasaRaharjaTestimonials: Testimonial[] = [
+  {
+    quote: "Simulasi penanganan keluarga korban memberikan gambaran nyata yang sangat membantu kami dalam menyelaraskan empati dengan ketegasan administratif di lapangan.",
+    name: "Shanty Shinta Warzuqni",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Cabang Tangerang",
+  },
+  {
+    quote: "Hal yang paling berkesan adalah pemahaman bahwa respons keluarga yang terlihat bingung atau lambat bukanlah hambatan, tetapi bagian dari proses duka yang normal. Ini membantu saya lebih sabar dan tidak terburu-buru dalam menyampaikan informasi.",
+    name: "Risa Puspita Wijaya Ningsih",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Kantor Wilayah Banten",
+  },
+  {
+    quote: "Pelatihan sangat relevan dengan pekerjaan saya, dan banyak hal yang menurut kita biasa saja tetapi ternyata salah.",
+    name: "Indah Hayati",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Cabang Tangerang",
+  },
+  {
+    quote: "Kerangka kerja yang diberikan (seperti GRAND dan RASA) sangat relevan untuk langsung dipraktikkan oleh petugas di lapangan.",
+    name: "Rama Adhitya Budhiarto",
+    role: "Peserta pelatihan",
+    company: "Jasa Raharja, Cabang Tangerang",
+  },
+];
+
+const TestimonialCard = ({ t }: { t: Testimonial }) => (
+  <figure
+    className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col"
+    style={{ borderTop: `4px solid ${brand.secondary}` }}
+  >
+    <Quote className="w-8 h-8 mb-4" style={{ color: brand.accent }} aria-hidden="true" />
+    <blockquote className="text-gray-700 leading-relaxed flex-grow">
+      &ldquo;{t.quote}&rdquo;
+    </blockquote>
+    <figcaption className="mt-6 pt-6 border-t border-gray-100">
+      <div className="font-bold text-gray-900">{t.name}</div>
+      <div className="text-sm text-gray-500">{t.role}</div>
+      <div className="text-sm font-semibold" style={{ color: brand.secondary }}>{t.company}</div>
+    </figcaption>
+  </figure>
+);
+
 const TestimonialsSection = () => (
   <section id="testimoni" className="py-24 bg-gray-50 border-t border-gray-100">
     <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -200,32 +252,53 @@ const TestimonialsSection = () => (
           Kata Peserta Pelatihan Kami
         </h2>
         <p className="text-gray-600 text-lg">
-          Umpan balik tertulis dari peserta di OJK, Bank Sinarmas, PT PP Infrastruktur, PT Solusi Bangun Indonesia, dan perusahaan lain.
+          Umpan balik tertulis dari peserta di Jasa Raharja, OJK, Bank Sinarmas, PT PP Infrastruktur, PT Solusi Bangun Indonesia, dan perusahaan lain.
         </p>
       </div>
 
+      {/* Jasa Raharja: angka dan kutipan */}
+      <div className="rounded-3xl p-8 md:p-12 mb-16" style={{ backgroundColor: brand.primary }}>
+        <div className="max-w-3xl mb-10">
+          <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.accent }}>
+            Jasa Raharja &middot; Juni 2026
+          </span>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mt-3 mb-3">
+            Petugas Belajar Menghadapi Keluarga Korban Kecelakaan
+          </h3>
+          <p className="text-white/80 leading-relaxed">
+            Program komunikasi empatik untuk petugas Kantor Wilayah Banten dan Cabang Tangerang, dua sesi pada 17 dan 18 Juni 2026.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-6 mb-10">
+          {jasaRaharjaStats.map((stat) => (
+            <div key={stat.label} className="rounded-2xl bg-white/10 p-6">
+              <div className="text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
+              <div className="text-sm text-white/80 mt-2">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {jasaRaharjaTestimonials.map((t) => (
+            <TestimonialCard key={`${t.name}-${t.company}`} t={t} />
+          ))}
+        </div>
+
+        <p className="text-xs text-white/60 mt-8">
+          Skor berasal dari tes pengetahuan 10 soal sebelum dan sesudah sesi, diambil pada sesi yang sama; 52 dari 67 peserta mencapai nilai penuh setelahnya. Penilaian peserta adalah rata-rata empat pertanyaan evaluasi pada skala 1 sampai 5.
+        </p>
+      </div>
+
+      {/* Peserta dari klien lain */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {testimonials.map((t) => (
-          <figure
-            key={`${t.name}-${t.company}`}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col"
-            style={{ borderTop: `4px solid ${brand.secondary}` }}
-          >
-            <Quote className="w-8 h-8 mb-4" style={{ color: brand.accent }} aria-hidden="true" />
-            <blockquote className="text-gray-700 leading-relaxed flex-grow">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-6 pt-6 border-t border-gray-100">
-              <div className="font-bold text-gray-900">{t.name}</div>
-              <div className="text-sm text-gray-500">{t.role}</div>
-              <div className="text-sm font-semibold" style={{ color: brand.secondary }}>{t.company}</div>
-            </figcaption>
-          </figure>
+          <TestimonialCard key={`${t.name}-${t.company}`} t={t} />
         ))}
       </div>
 
       <p className="text-center text-xs text-gray-400 mt-10">
-        Dikutip dari formulir umpan balik peserta pelatihan Performa, 2022 &ndash; 2024.
+        Kutipan dari formulir umpan balik peserta pelatihan Performa, 2022 &ndash; 2026.
       </p>
     </div>
   </section>
