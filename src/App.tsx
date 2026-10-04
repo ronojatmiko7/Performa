@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   ArrowRight, Activity, Target, Users, CheckCircle2,
   ChevronRight, Building2, Briefcase,
-  ArrowLeft, CheckCircle, AlertTriangle
+  ArrowLeft, CheckCircle, AlertTriangle, Quote
 } from 'lucide-react';
 
 // ==========================================
@@ -143,6 +143,93 @@ const InsightsPreview = () => {
     </section>
   );
 };
+
+interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+}
+
+// Kutipan dari formulir umpan balik peserta pelatihan Performa (2022 - 2024).
+// Teks dikutip apa adanya; hanya ejaan, huruf kapital, dan tanda baca yang dirapikan.
+const testimonials: Testimonial[] = [
+  {
+    quote: "Sangat luar biasa, memberikan impact yang sangat bagus untuk performa dari tim internal kami.",
+    name: "Agnes P.",
+    role: "Lead Supply & Vendor Management",
+    company: "PT Tibeka Logistik Indonesia",
+  },
+  {
+    quote: "Pelatihannya sangat menarik, dan menjadi hal baru yang saya pelajari, sangat relevan dengan kondisi yang akan dihadapi dan implementatif.",
+    name: "Cut Nurul H.",
+    role: "Staf Subbagian Pengawasan Bank",
+    company: "Otoritas Jasa Keuangan, Provinsi Aceh",
+  },
+  {
+    quote: "Materinya bagus, simple, dibawakan dengan sangat komunikatif dan interaktif oleh Mas Rono, dan penting banget nih: pake bahasa yang sederhana dan applicable.",
+    name: "Vina",
+    role: "Organization, Policy & Compliance Specialist",
+    company: "PT Solusi Bangun Indonesia Tbk",
+  },
+  {
+    quote: "Sangat bermanfaat, apa yang dikerjakan ternyata ada teori yang lebih efisien dan cocok dalam pendekatan atas masalah yang terjadi.",
+    name: "Yudha P.",
+    role: "Hardware Programmer",
+    company: "PT Nutech Integrasi",
+  },
+  {
+    quote: "Penyampaian materi singkat, jelas, dan sangat tepat sasaran.",
+    name: "Gratianus N.",
+    role: "Manager",
+    company: "PT PP Infrastruktur",
+  },
+  {
+    quote: "Training ini memberikan insight lebih dalam mengenai cara berkomunikasi dengan baik dan Pak Rono sangat baik dalam menyampaikan materi sehingga tidak membosankan.",
+    name: "Humairoh",
+    role: "Staff",
+    company: "Bank Sinarmas",
+  },
+];
+
+const TestimonialsSection = () => (
+  <section id="testimoni" className="py-24 bg-gray-50 border-t border-gray-100">
+    <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: brand.primary }}>
+          Kata Peserta Pelatihan Kami
+        </h2>
+        <p className="text-gray-600 text-lg">
+          Umpan balik tertulis dari peserta di OJK, Bank Sinarmas, PT PP Infrastruktur, PT Solusi Bangun Indonesia, dan perusahaan lain.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((t) => (
+          <figure
+            key={`${t.name}-${t.company}`}
+            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 flex flex-col"
+            style={{ borderTop: `4px solid ${brand.secondary}` }}
+          >
+            <Quote className="w-8 h-8 mb-4" style={{ color: brand.accent }} aria-hidden="true" />
+            <blockquote className="text-gray-700 leading-relaxed flex-grow">
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <figcaption className="mt-6 pt-6 border-t border-gray-100">
+              <div className="font-bold text-gray-900">{t.name}</div>
+              <div className="text-sm text-gray-500">{t.role}</div>
+              <div className="text-sm font-semibold" style={{ color: brand.secondary }}>{t.company}</div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <p className="text-center text-xs text-gray-400 mt-10">
+        Dikutip dari formulir umpan balik peserta pelatihan Performa, 2022 &ndash; 2024.
+      </p>
+    </div>
+  </section>
+);
 
 const LinkedinIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
@@ -518,6 +605,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
           </div>
         </div>
       </section>
+
+      {/* TESTIMONIALS */}
+      <TestimonialsSection />
 
       {/* CONSEQUENCE */}
       <section className="py-24 bg-gray-900 text-white">
