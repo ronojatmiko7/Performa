@@ -44,6 +44,7 @@ const brand = {
 
 const logoUtama = "https://i.ibb.co.com/1f7TdvLj/performa-only-logo.jpg";
 const insightsURL = "https://insights.performa.co.id/insights";
+const catalogURL = "https://insights.performa.co.id/pelatihan";
 const insightsFeedURL = "https://insights.performa.co.id/posts.json";
 
 interface InsightPost {
@@ -330,6 +331,10 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
               className="text-sm font-medium text-gray-600 hover:text-[#005073] transition-colors">
               Konsultan Kami
             </a>
+            <a href={catalogURL}
+              className="text-sm font-medium text-gray-600 hover:text-[#005073] transition-colors">
+              Pelatihan
+            </a>
             <a href={insightsURL}
               className="text-sm font-medium transition-colors"
               style={{ color: "#005073", fontWeight: 600 }}>
@@ -368,6 +373,11 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             <a href="#tim"
               className="text-sm font-medium text-gray-700" onClick={() => setMenuOpen(false)}>
               Konsultan Kami
+            </a>
+            <a href={catalogURL}
+              className="text-sm font-semibold" style={{ color: "#005073" }}
+              onClick={() => setMenuOpen(false)}>
+              Pelatihan
             </a>
             <a href={insightsURL}
               className="text-sm font-semibold" style={{ color: "#005073" }}
@@ -748,6 +758,10 @@ const HomeView: React.FC<HomeViewProps> = ({ onStartAssessment }) => {
             <a href="#tim"
               className="text-sm text-gray-500 hover:text-[#005073] transition-colors">
               Konsultan Kami
+            </a>
+            <a href={catalogURL}
+              className="text-sm text-gray-500 hover:text-[#005073] transition-colors">
+              Pelatihan
             </a>
             <a href={insightsURL}
               className="text-sm text-gray-500 hover:text-[#005073] transition-colors">
