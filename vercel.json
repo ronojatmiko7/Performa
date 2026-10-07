@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "src": "^/(?:en/blog/apa-itu-training-need-analysis-tna|public/index\\.php/id/blog/5-kesalahan-fatal-dalam-melakukan-training-need-analysis|index\\.php/jasa-training-need-analysis-tna)/?$",
+      "status": 301,
+      "headers": {
+        "Location": "https://insights.performa.co.id/insights/training-need-analysis-tna-cara-melakukan-dan-kenapa-survei-saja-tidak-cukup"
+      }
+    },
+    {
+      "src": "^/training-and-development/begini-3-langkah-terapkan-standar-operasional-prosedur-sop-di-perusahaan/?$",
+      "status": 301,
+      "headers": {
+        "Location": "https://insights.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan"
+      }
+    },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
+  ]
+}
