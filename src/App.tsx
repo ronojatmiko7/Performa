@@ -54,6 +54,8 @@ interface InsightPost {
   date: string;
   tag: string | null;
   url: string;
+  // Absolute image URL from the feed, or null/missing when the article has no image yet.
+  image?: string | null;
 }
 
 // Shown until the live feed answers, and kept if it never does.
@@ -75,12 +77,12 @@ const fallbackInsights: InsightPost[] = [
     url: "https://insights.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan",
   },
   {
-    slug: "kenapa-kpi-gagal-dan-ini-bukan-salah-karyawan-anda",
-    title: "Kenapa KPI Gagal? (Dan Ini Bukan Salah Karyawan Anda)",
+    slug: "kenapa-kpi-tidak-tercapai-dan-ini-bukan-salah-karyawan-anda",
+    title: "Kenapa KPI Tidak Tercapai? (Dan Ini Bukan Salah Karyawan Anda)",
     excerpt: "Ketika KPI tidak tercapai, kebanyakan perusahaan mengganti orangnya, bukan sistemnya. Ini tiga akar masalah KPI yang paling sering diabaikan.",
     date: "2026-06-09",
     tag: "KPI",
-    url: "https://insights.performa.co.id/insights/kenapa-kpi-gagal-dan-ini-bukan-salah-karyawan-anda",
+    url: "https://insights.performa.co.id/insights/kenapa-kpi-tidak-tercapai-dan-ini-bukan-salah-karyawan-anda",
   },
 ];
 
@@ -120,16 +122,26 @@ const InsightsPreview = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {posts.map((post) => (
             <a key={post.slug} href={post.url} className="group cursor-pointer block">
-              <div
-                className="h-48 rounded-xl mb-6 p-6 flex items-end"
-                style={{ backgroundColor: "#005073" }}
-              >
-                {post.tag && (
-                  <span className="text-xs font-bold text-white/80 uppercase tracking-widest">
-                    {post.tag}
-                  </span>
-                )}
-              </div>
+              {post.image ? (
+                // Square, uncropped: the picture carries its own headline, a strip crop would cut it.
+                <img
+                  src={post.image}
+                  alt=""
+                  loading="lazy"
+                  className="aspect-square w-full rounded-xl mb-6 object-cover"
+                />
+              ) : (
+                <div
+                  className="h-48 rounded-xl mb-6 p-6 flex items-end"
+                  style={{ backgroundColor: "#005073" }}
+                >
+                  {post.tag && (
+                    <span className="text-xs font-bold text-white/80 uppercase tracking-widest">
+                      {post.tag}
+                    </span>
+                  )}
+                </div>
+              )}
               <h3 className="text-xl font-bold mb-2 group-hover:text-[#107dac] transition-colors leading-tight">
                 {post.title}
               </h3>
