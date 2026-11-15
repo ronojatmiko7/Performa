@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pra-Diagnosis Kinerja Organisasi | Performa Consulting</title>
+<link rel="canonical" href="https://www.performa.co.id/prediagnosis">
+<meta property="og:title" content="Pra-Diagnosis Kinerja Organisasi | Performa Consulting">
+<meta property="og:description" content="13 dimensi kinerja organisasi, model Input–Proses–Output. Laporan konsultasi 1 halaman, gratis.">
+<link rel="icon" href="/favicon.ico">
+<meta name="description" content="Pra-diagnosis 13 dimensi kinerja organisasi berbasis model Input–Proses–Output. Hasilnya laporan konsultasi 1 halaman untuk Direksi dan pimpinan HR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Meta Pixel: belum dipasang. Kalau nanti ada pixel khusus Performa, tempel di sini. -->
+<style>
+  :root{
+    --navy:#005073; --navy-d:#003a54; --blue:#117DAC; --ink:#0D0D0D; --off:#F7F9FA;
+    --muted:#5B7280; --line:#E1E7EA; --navy-t:#E8EEF1; --blue-t:#E4F0F6;
+    --gold:#C9A227; --danger:#8C3B3B; --danger-t:#F6ECEC; --ok:#2F6B4F;
+    --serif:"Source Serif 4", Cambria, Georgia, serif;
+    --sans:"Inter", Calibri, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:var(--off);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+  button{font-family:inherit;cursor:pointer}
+  .hidden{display:none!important}
+  .logo{height:44px;width:auto;display:block}
+
+  /* ---------- LANDING ---------- */
+  #landing{min-height:100vh;display:flex;flex-direction:column}
+  .land-top{padding:22px 28px;display:flex;align-items:center;justify-content:space-between;max-width:1080px;width:100%;margin:0 auto}
+  .land-top .tag{font-size:12px;color:var(--muted);letter-spacing:.04em}
+  .land-main{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 20px 56px}
+  .land-card{max-width:640px;width:100%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:44px 44px 36px;box-shadow:0 1px 2px rgba(0,40,60,.04),0 12px 32px -18px rgba(0,40,60,.18)}
+  .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+  .land-card h1{font-family:var(--serif);font-weight:600;font-size:38px;line-height:1.15;color:var(--navy);margin:12px 0 16px;letter-spacing:-.01em}
+  .land-card p.lead{font-size:16px;line-height:1.65;color:#2b3a42;margin:0 0 22px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:26px}
+  .meta span{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .meta svg{width:15px;height:15px;stroke:var(--navy)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:8px;font-weight:600;font-size:15px;padding:14px 26px;text-decoration:none;transition:background .15s,transform .05s}
+  .btn:active{transform:translateY(1px)}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--navy-d)}
+  .btn-gold{background:var(--gold);color:#1d1600}
+  .btn-gold:hover{background:#b8931f}
+  .btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--navy-t)}
+  .fine{font-size:12px;color:var(--muted);margin-top:12px}
+  .land-foot{text-align:center;font-size:12px;color:var(--muted);padding:0 20px 24px}
+
+  /* ---------- QUIZ ---------- */
+  #quiz{min-height:100vh;display:flex;flex-direction:column}
+  .q-head{max-width:720px;width:100%;margin:0 auto;padding:22px 20px 0}
+  .q-head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .q-head-row .logo{height:34px}
+  .q-count{font-size:13px;color:var(--muted)}
+  .q-count b{color:var(--navy)}
+  .progress{display:flex;gap:4px}
+  .progress i{flex:1;height:4px;border-radius:2px;background:var(--line);transition:background .2s}
+  .progress i.on{background:var(--navy)}
+  .q-main{max-width:720px;width:100%;margin:0 auto;padding:18px 20px}
+  .q-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px 34px 30px;animation:slide .28s ease}
+  .q-card.back{animation:slideback .28s ease}
+  @keyframes slide{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+  @keyframes slideback{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+  .q-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .chip{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--navy-t);padding:5px 10px;border-radius:4px}
+  .q-area{font-size:12.5px;color:var(--muted)}
+  .q-text{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.35;color:var(--ink);margin:0 0 24px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:flex;align-items:flex-start;gap:14px;text-align:left;width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px 16px;transition:border-color .15s,background .15s}
+  .opt:hover{border-color:var(--blue);background:#f6fafc}
+  .opt.sel{border-color:var(--navy);background:var(--blue-t);box-shadow:0 0 0 2px rgba(0,80,115,.15)}
+  .opt .lt{flex:0 0 28px;height:28px;border-radius:50%;background:var(--off);border:1px solid var(--line);color:var(--muted);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .opt.sel .lt{background:var(--navy);border-color:var(--navy);color:#fff}
+  .opt .tx{font-size:15px;line-height:1.5;color:#22313a;padding-top:3px}
+  .q-foot{max-width:720px;width:100%;margin:0 auto;padding:6px 20px 30px;display:flex;justify-content:space-between;align-items:center}
+  .linkbtn{background:none;border:0;color:var(--muted);font-size:14px;font-weight:500;display:flex;align-items:center;gap:6px;padding:8px 0}
+  .linkbtn:hover{color:var(--navy)}
+  .linkbtn svg{width:16px;height:16px}
+  .q-hint{font-size:12px;color:var(--muted)}
+
+  /* lead form */
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  .form-grid .full{grid-column:1/-1}
+  .fld label{display:block;font-size:12.5px;font-weight:600;color:#33434c;margin-bottom:6px}
+  .fld input,.fld select{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;border:1px solid #cfd8dd;border-radius:8px;padding:11px 12px;outline:none;transition:border-color .15s,box-shadow .15s}
+  .fld input:focus,.fld select:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(0,80,115,.12)}
+  .form-note{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;justify-content:center;margin-top:12px}
+  .form-note svg{width:14px;height:14px}
+
+  /* ---------- REPORT ---------- */
+  #report{min-height:100vh;padding:0 0 48px}
+  .toolbar{position:sticky;top:0;z-index:20;background:rgba(247,249,250,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .toolbar-in{max-width:860px;margin:0 auto;padding:12px 20px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .toolbar .btn{padding:10px 16px;font-size:14px}
+  .tb-right{display:flex;gap:8px;flex-wrap:wrap}
+  .booked{max-width:860px;margin:14px auto 0;padding:0 20px}
+  .booked div{background:#EAF4EE;border:1px solid #CFE5D7;color:var(--ok);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500}
+  .page-wrap{max-width:860px;margin:22px auto 0;padding:0 20px}
+  .page-scale{transform-origin:top left}
+  .page{width:794px;height:1123px;background:#fff;box-shadow:0 1px 2px rgba(0,40,60,.06),0 18px 44px -22px rgba(0,40,60,.28);position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .page-bar{height:6px;background:linear-gradient(90deg,var(--navy) 0 78%,var(--gold) 78% 100%)}
+  .pg{padding:22px 44px 0;flex:1;display:flex;flex-direction:column}
+  .lh{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .lh .logo{height:36px}
+  .lh-r{text-align:right;font-size:10px;line-height:1.55;color:var(--muted)}
+  .lh-r b{color:var(--danger);letter-spacing:.12em;font-size:9.5px}
+  .ttl{padding:10px 0 9px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+  .ttl .eyebrow{font-size:9.5px}
+  .ttl h2{font-family:var(--serif);font-weight:700;font-size:24px;color:var(--navy);margin:4px 0 3px;line-height:1.15}
+  .ttl .sub{font-size:11px;color:var(--muted)}
+  .ttl .sub b{color:var(--ink);font-weight:600}
+  .level-badge{text-align:right;white-space:nowrap}
+  .level-badge .lvl{font-family:var(--serif);font-size:13px;font-weight:600;color:var(--navy);background:var(--navy-t);padding:5px 10px;border-radius:4px;display:inline-block}
+  .level-badge .cap{display:block;font-size:9px;color:var(--muted);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+
+  .sec-h{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin:0 0 6px}
+  .sec-h span{display:inline-flex;width:17px;height:17px;border-radius:50%;background:var(--navy);color:#fff;font-size:9px;align-items:center;justify-content:center;letter-spacing:0}
+  .sec-h:after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .exec{display:grid;grid-template-columns:1fr 190px;gap:12px;margin-bottom:11px}
+  .exec-box{background:var(--navy);color:#fff;border-radius:8px;padding:13px 16px}
+  .exec-box .k{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a9cbdb}
+  .exec-box h3{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.3;margin:5px 0 6px}
+  .exec-box p{font-size:10.5px;line-height:1.55;margin:0;color:#e3eef3}
+  .exec-box .impl{margin-top:7px;padding-top:7px;border-top:1px solid rgba(255,255,255,.18);font-size:10.5px;color:#cfe2ea}
+  .exec-box .impl b{color:var(--gold);font-weight:600}
+  .stats{display:flex;flex-direction:column;gap:8px}
+  .stat{border:1px solid var(--line);background:var(--off);border-radius:8px;padding:7px 12px;flex:1}
+  .stat .l{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .stat .v{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--navy);line-height:1.15;margin-top:2px}
+  .stat .v small{font-family:var(--sans);font-size:11px;color:var(--muted);font-weight:500}
+  .stat .v.red{color:var(--danger)}
+  .stat .d{font-size:9.5px;color:var(--muted);margin-top:1px}
+
+  .ipo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:6px;position:relative}
+  .dom{border:1px solid var(--line);border-radius:8px;padding:8px 12px;position:relative}
+  .dom.root{border-color:var(--danger);background:var(--danger-t)}
+  .dom .n{display:flex;justify-content:space-between;align-items:baseline}
+  .dom .n b{font-size:11.5px;color:var(--ink)}
+  .dom .n em{font-style:normal;font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy)}
+  .dom.risk .n em{color:var(--danger)}
+  .dom .s{font-size:9.5px;color:var(--muted);margin:1px 0 6px}
+  .bar{height:7px;background:var(--line);border-radius:4px;position:relative;overflow:visible}
+  .bar i{display:block;height:100%;border-radius:4px;background:var(--navy)}
+  .dom.risk .bar i{background:var(--danger)}
+  .bar u{position:absolute;left:62.5%;top:-3px;bottom:-3px;width:1.5px;background:var(--ink);opacity:.35}
+  .dom .st{font-size:9.5px;font-weight:600;margin-top:6px;color:var(--ok)}
+  .dom.risk .st{color:var(--danger)}
+  .dom .rt{position:absolute;top:-8px;right:10px;background:var(--danger);color:#fff;font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+  .ipo-note{font-size:9.5px;color:var(--muted);margin:0 0 12px;display:flex;justify-content:space-between}
+
+  table.fd{width:100%;border-collapse:collapse;font-size:10.5px;margin-bottom:4px}
+  table.fd th{text-align:left;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:6px 8px;border-bottom:1.5px solid var(--navy);background:var(--off)}
+  table.fd td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+  table.fd td.dm{width:58px;color:var(--muted);font-size:9.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+  table.fd td.a{width:178px;font-weight:600;color:var(--ink)}
+  table.fd td.a small{display:inline;margin-right:6px;font-weight:500;color:var(--muted);font-size:9px;letter-spacing:.04em;text-transform:uppercase}
+  table.fd td.c{color:#33434c}
+  table.fd td.sc{width:46px;text-align:center}
+  .pill{display:inline-block;min-width:26px;font-weight:700;font-size:10px;padding:2px 6px;border-radius:3px;background:var(--danger);color:#fff}
+  .pill.s2{background:#B8706F}
+  .fd-more{font-size:9.5px;color:var(--muted);margin:2px 0 10px;font-style:italic}
+  .nofind{font-size:11px;color:var(--muted);border:1px dashed var(--line);border-radius:8px;padding:12px;margin-bottom:14px}
+
+  .rec{display:grid;grid-template-columns:1.05fr 1fr;gap:12px;margin-bottom:10px}
+  .rbox{border:1px solid var(--line);border-radius:8px;padding:10px 13px}
+  .rbox h4{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy);margin:0 0 6px}
+  .rbox .kv{display:flex;justify-content:space-between;font-size:10.5px;padding:3px 0;border-bottom:1px dotted var(--line)}
+  .rbox .kv:last-child{border-bottom:0}
+  .rbox .kv span{color:var(--muted)}
+  .rbox .kv b{color:var(--ink);font-weight:600;text-align:right}
+  .rbox p{font-size:10.5px;line-height:1.5;color:#33434c;margin:0 0 6px}
+  .rbox ol{margin:0;padding:0;list-style:none;counter-reset:s}
+  .rbox ol li{counter-increment:s;display:flex;gap:8px;font-size:10.5px;line-height:1.4;padding:3px 0;border-bottom:1px dotted var(--line)}
+  .rbox ol li:last-child{border-bottom:0}
+  .rbox ol li:before{content:counter(s);flex:0 0 16px;height:16px;border-radius:50%;background:var(--navy);color:#fff;font-size:8.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .rbox ol li b{display:block;color:var(--ink)}
+  .rbox ol li small{display:block;color:var(--muted);font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:290px}
+
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:10px}
+  .road div{position:relative;padding:6px 10px 6px 12px;background:var(--off);border:1px solid var(--line);margin-left:-1px;font-size:9.5px;color:var(--muted);line-height:1.35}
+  .road div:first-child{border-radius:6px 0 0 6px;margin-left:0}
+  .road div:last-child{border-radius:0 6px 6px 0}
+  .road div b{display:block;color:var(--ink);font-size:10px}
+  .road div.done{background:var(--navy-t)}
+  .road div.done b{color:var(--navy)}
+  .road div.next{background:#fff;border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);z-index:1}
+  .road div.next b{color:var(--navy)}
+  .road div.next:after{content:"Rekomendasi";position:absolute;top:-8px;right:8px;background:var(--gold);color:#1d1600;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:3px}
+
+  .cta{margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--navy-t);border-radius:8px;padding:9px 16px;margin-bottom:10px}
+  .cta .t b{display:block;font-family:var(--serif);font-size:13.5px;color:var(--navy)}
+  .cta .t span{font-size:10.5px;color:#33434c}
+  .cta a{flex:0 0 auto;background:var(--gold);color:#1d1600;text-decoration:none;font-weight:700;font-size:11.5px;padding:9px 14px;border-radius:6px}
+  .pfoot{border-top:1px solid var(--line);padding:8px 44px 12px;white-space:nowrap;gap:12px;display:flex;justify-content:space-between;font-size:8.5px;color:var(--muted);line-height:1.5}
+  .pfoot b{color:var(--navy)}
+
+  @media (max-width:640px){
+    .land-card{padding:30px 22px 26px}
+    .land-card h1{font-size:30px}
+    .q-card{padding:24px 18px 22px}
+    .q-text{font-size:20px}
+    .form-grid{grid-template-columns:1fr}
+    .land-top{padding:18px 20px}
+    .land-top .tag{display:none}
+    .toolbar .btn span.lbl-long{display:none}
+  }
+
+  @page{size:A4;margin:0}
+  @media print{
+    body{background:#fff;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    #landing,#quiz,.toolbar,.booked,.no-print{display:none!important}
+    #report{padding:0}
+    .page-wrap{margin:0;padding:0;max-width:none}
+    .page-scale{transform:none!important;height:auto!important}
+    .page{box-shadow:none;width:210mm;height:296.5mm}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ LANDING ============ -->
+<section id="landing">
+  <div class="land-top">
+    <a href="/" aria-label="Kembali ke performa.co.id"><img class="logo" src="https://i.ibb.co.com/qMHcWzjh/Logo-Only-performa.png" alt="Performa Consulting"></a>
+    <span class="tag">PT Performa International Indonesia · Improving Performance</span>
+  </div>
+  <div class="land-main">
+    <div class="land-card">
+      <div class="eyebrow">Pra-Diagnosis Kinerja Organisasi</div>
+      <h1>Di titik mana kinerja organisasi Anda tertahan?</h1>
+      <p class="lead">Jawab 13 pertanyaan berbasis model <b>Input–Proses–Output</b>, model yang sama yang kami gunakan di proyek konsultasi korporat. Anda langsung menerima laporan konsultasi 1 halaman: indeks kematangan organisasi, temuan kunci, titik akar masalah, dan rekomendasi langkah berikutnya.</p>
+      <div class="meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>± 8 menit</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>13 dimensi kinerja</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Laporan 1 halaman (PDF)</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Untuk Direksi, C-Level &amp; pimpinan HR</span>
+      </div>
+      <button class="btn btn-primary" id="btn-start">Mulai Pra-Diagnosis
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <div class="fine">Tanpa biaya. Jawaban Anda bersifat rahasia dan hanya dipakai untuk menyusun laporan.</div>
+    </div>
+  </div>
+  <div class="land-foot">© Performa Consulting · Centennial Tower, Jakarta Selatan</div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz" class="hidden">
+  <div class="q-head">
+    <div class="q-head-row">
+      <img class="logo" src="https://i.ibb.co.com/qMHcWzjh/Logo-Only-performa.png" alt="Performa Consulting">
+      <div class="q-count" id="q-count"></div>
+    </div>
+    <div class="progress" id="progress"></div>
+  </div>
+  <div class="q-main" id="q-main"></div>
+  <div class="q-foot">
+    <button class="linkbtn" id="btn-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span id="back-lbl">Kembali</span></button>
+    <span class="q-hint" id="q-hint">Pilih kondisi yang paling mendekati kenyataan hari ini.</span>
+  </div>
+</section>
+
+<!-- ============ REPORT ============ -->
+<section id="report" class="hidden">
+  <div class="toolbar">
+    <div class="toolbar-in">
+      <button class="linkbtn" id="btn-restart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Ulangi</button>
+      <div class="tb-right">
+        <button class="btn btn-ghost" id="btn-pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Unduh PDF</button>
+        <button class="btn btn-gold" id="btn-book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jadwalkan Sesi 1-on-1<span class="lbl-long">&nbsp;(Gratis)</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="booked hidden" id="booked"><div>Sesi Anda sudah terjadwal. Link Zoom dikirim ke email Anda.</div></div>
+  <div class="page-wrap"><div class="page-scale" id="page-scale"><div class="page" id="page"></div></div></div>
+</section>
+
+<script>
+/* ========= CONFIG ========= */
+const CALENDLY_URL = 'https://calendly.com/performaconsulting/performa-pembahasan-hasil-pra-diagnosis';
+// Same submit-lead Edge Function the Effortless Business funnel uses. Rows are tagged
+// "[Performa]" in business_name; corporate-only fields live inside diagnostic_result.
+const SUBMIT_LEAD_URL = 'https://edodmmedehuuemnnmdri.supabase.co/functions/v1/submit-lead';
+const LOGO = 'https://i.ibb.co.com/qMHcWzjh/Logo-Only-performa.png';
+
+/* ========= DATA: 13 dimensi (sumber: organizational_prediagnostic_tool_id.html) ========= */
+const Q = [
+ {id:1,section:'Output',area:'Ketersediaan KPI',service:2,
+  question:'Apakah Indikator Kinerja Utama (KPI) yang jelas dan terukur tersedia di semua tingkat organisasi (korporat, departemen, individu)?',
+  anchors:['Belum ada KPI; tujuan masih kualitatif atau reaktif.','KPI hanya ada di tingkat korporat; target departemen masih samar.','KPI terdefinisi konsisten di tingkat korporat dan departemen.','KPI ter-cascade sampai individu, dilacak dinamis, dan terhubung ke profil jabatan.']},
+ {id:2,section:'Output',area:'Keselarasan & Kualitas KPI',service:2,
+  question:'Apakah KPI operasional selaras dengan tujuan strategis, dan menyeimbangkan metrik lag (hasil) dengan metrik lead (input proses)?',
+  anchors:['Metrik mendorong perilaku silo dan hanya mengukur output vanitas.','Didominasi metrik lag historis; indikator lead nyaris tidak dilacak.','Kombinasi lead dan lag seimbang dan selaras dengan tujuan departemen.','Strategy map tersinkron penuh dengan indikator lead yang prediktif.']},
+ {id:3,section:'Output',area:'Monitoring & Tata Kelola',service:3,
+  question:'Apakah ada ritme terstruktur untuk meninjau KPI, dan apakah deviasi kinerja ditangani dengan analisis akar masalah?',
+  anchors:['Tinjauan ad-hoc saat krisis; saling menyalahkan sering terjadi.','Tinjauan bulanan/kuartalan ada, tetapi tanpa pemecahan akar masalah.','Tinjauan rutin mingguan/bulanan dengan action log standar.','Ritme tata kelola ketat dengan peringatan otomatis dan tindakan korektif closed-loop.']},
+ {id:4,section:'Proses',area:'Hierarki Proses',service:4,
+  question:'Apakah organisasi memelihara arsitektur dokumentasi proses bisnis 4 tingkat, dari Peta Proses L1 hingga Instruksi Kerja/SOP L4?',
+  anchors:['Belum ada dokumentasi formal; pengetahuan tribal dan kebiasaan pribadi yang berlaku.','Kebijakan tingkat tinggi ada di atas kertas, prosedur L3/L4 belum ada.','SOP terdokumentasi untuk alur kerja operasional inti.','Arsitektur L1–L4 terpetakan penuh dalam repositori digital yang mudah diakses.']},
+ {id:5,section:'Proses',area:'Kepatuhan & Kegunaan SOP',service:5,
+  question:'Apakah SOP L3/L4 jelas, terkini, mudah diakses, dan benar-benar diikuti karyawan dalam operasional sehari-hari?',
+  anchors:['SOP usang dan berdebu; jalan pintas informal mendominasi.','SOP ada tetapi rumit atau sulit ditemukan, sehingga adopsinya rendah.','SOP diikuti hampir sepanjang waktu dengan pengecekan supervisi sesekali.','Kerja standar diverifikasi aktif melalui audit kepatuhan proses rutin.']},
+ {id:6,section:'Proses',area:'Efisiensi Proses',service:4,
+  question:'Apakah serah terima antardepartemen berjalan mulus, atau justru tertahan silo fungsional, persetujuan berulang, dan bottleneck?',
+  anchors:['Silo parah; serah terima lintas departemen sering gagal atau macet.','Rantai persetujuan lambat dan friksi antardepartemen terasa nyata.','Protokol serah terima jelas; penundaan birokrasi masih terkendali.','Alur kerja lean dengan kolaborasi lintas fungsi yang mulus.']},
+ {id:7,section:'Proses',area:'Penetapan Sasaran (PMS)',service:6,
+  question:'Apakah sasaran kinerja individu dan tim ditetapkan secara kolaboratif dan di-cascade dengan jelas di awal setiap siklus?',
+  anchors:['Sasaran berupa mandat top-down tanpa konteks atau diskusi.','Penetapan sasaran tahunan terlambat dan minim penyelarasan.','Penetapan sasaran kolaboratif dan jelas di awal siklus.','Penetapan sasaran agile dan terhubung dinamis ke prioritas departemen.']},
+ {id:8,section:'Proses',area:'Monitoring & Coaching (PMS)',service:6,
+  question:'Apakah atasan menjalankan sesi umpan balik kinerja 1-on-1 yang terstruktur dan rutin di luar penilaian tahunan?',
+  anchors:['Tidak ada check-in rutin; kinerja hanya dibahas saat penilaian tahunan.','Check-in informal sesekali, biasanya saat masalah muncul.','Sesi 1-on-1 bulanan yang terstruktur sudah menjadi praktik standar.','Budaya coaching yang hidup dengan umpan balik proaktif dan dialog pengembangan.']},
+ {id:9,section:'Proses',area:'Pengembangan & Tindakan Korektif',service:6,
+  question:'Apakah underperformance ditangani secara formal melalui coaching, pelatihan, atau Performance Improvement Plan (PIP) sebelum penilaian akhir?',
+  anchors:['Diabaikan sampai terjadi pemutusan mendadak atau penilaian tahunan yang mengejutkan.','Ditangani reaktif dengan surat peringatan tanpa dukungan pengembangan.','PIP standar dan protokol coaching diterapkan untuk karyawan berkinerja rendah.','Pemicu peringatan dini dengan rencana remediasi terstruktur dan pelacakan keberhasilan.']},
+ {id:10,section:'Proses',area:'Sistem Manajemen Mutu',service:4,
+  question:'Apakah ada Sistem Manajemen Mutu (QMS/QA/QC) formal dengan standar yang jelas untuk mencegah kesalahan?',
+  anchors:['Tidak ada standar mutu; kesalahan baru ketahuan dari keluhan pelanggan.','Inspeksi QC dasar di akhir lini, tanpa QMS yang preventif.','Pengecekan mutu standar dan log QA dipelihara rutin.','QMS solid dengan loop audit rutin dan error-proofing (poka-yoke).']},
+ {id:11,section:'Input',area:'Kompetensi & Profil Jabatan',service:7,
+  question:'Apakah Deskripsi Jabatan didukung Model Kompetensi (inti, fungsional, kepemimpinan) yang menetapkan tingkat kemahiran yang dibutuhkan?',
+  anchors:['Deskripsi jabatan berupa daftar tugas usang tanpa framework kompetensi.','Deskripsi jabatan generik, belum terhubung ke tingkat kemahiran tertentu.','Model kompetensi terdefinisi untuk jabatan-jabatan inti.','Kamus kompetensi terintegrasi penuh dan menjadi dasar keputusan talenta.']},
+ {id:12,section:'Input',area:'Rekrutmen & Asesmen',service:7,
+  question:'Apakah rekrutmen menggunakan alat seleksi berbasis kompetensi yang terstruktur, misalnya Behavioral Event Interview (BEI)?',
+  anchors:['Keputusan rekrutmen murni berdasarkan feeling tanpa kriteria terstruktur.','Penyaringan CV dasar dan wawancara tidak terstruktur oleh hiring manager.','Panduan wawancara terstruktur dan penyaringan kompetensi dasar.','Scorecard asesmen berbasis kompetensi yang ketat beserta proses validasinya.']},
+ {id:13,section:'Input',area:'Sumber Daya & Alat Kerja',service:8,
+  question:'Apakah karyawan lini depan dan staf memiliki alat fisik, perangkat lunak, workstation, dan dukungan pengadaan yang berfungsi penuh?',
+  anchors:['Kekurangan alat kronis, peralatan rusak, dan pengadaan tersendat.','Alat memadai, tetapi pemenuhan software atau material sering terlambat.','Penyediaan sumber daya stabil dengan pemeliharaan peralatan yang andal.','Ekosistem sumber daya lengkap sehingga eksekusi harian berjalan tanpa hambatan.']}
+];
+
+const SERVICES = {
+  2:'KPI Architecture & Strategic Cascading',
+  3:'Executive Business Review (EBR) Governance',
+  4:'Business Process Re-engineering',
+  5:'SOP Usability Redesign',
+  6:'Performance Management System Overhaul',
+  7:'Job Architecture & Competency Modeling',
+  8:'Enterprise Change Management'
+};
+const DOM = {
+  Input:{label:'Input',sub:'Kompetensi · Rekrutmen · Sumber daya'},
+  Proses:{label:'Proses',sub:'Proses · SOP · Mutu · PMS'},
+  Output:{label:'Output',sub:'KPI · Keselarasan · Tata kelola'}
+};
+const IPO_ORDER = ['Input','Proses','Output'];
+const LETTERS = ['A','B','C','D'];
+
+/* ========= STATE ========= */
+let idx = 0, answers = {}, phase = 'q', lead = null, result = null, timer = null;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function show(id){ ['landing','quiz','report'].forEach(s => $('#'+s).classList.toggle('hidden', s!==id)); window.scrollTo({top:0}); }
+
+/* ========= QUIZ ========= */
+function renderProgress(){
+  $('#progress').innerHTML = Q.map((q,i)=>`<i class="${(phase==='lead'||i<=idx)?'on':''}"></i>`).join('');
+  $('#q-count').innerHTML = phase==='lead' ? `<b>13/13</b> terjawab` : `Pertanyaan <b>${idx+1}</b> dari ${Q.length}`;
+  $('#btn-back').style.visibility = (phase==='q' && idx===0) ? 'hidden' : 'visible';
+  $('#back-lbl').textContent = phase==='lead' ? 'Kembali ke pertanyaan terakhir' : 'Kembali';
+  $('#q-hint').style.display = phase==='lead' ? 'none' : '';
+}
+function renderQuestion(dir){
+  const q = Q[idx];
+  const sel = answers[q.id];
+  $('#q-main').innerHTML = `
+    <div class="q-card ${dir<0?'back':''}">
+      <div class="q-meta"><span class="chip">Domain ${q.section}</span><span class="q-area">P${q.id} · ${q.area}</span></div>
+      <h2 class="q-text">${q.question}</h2>
+      <div class="opts">${q.anchors.map((a,i)=>`
+        <button class="opt ${sel===i+1?'sel':''}" data-score="${i+1}"><span class="lt">${LETTERS[i]}</span><span class="tx">${a}</span></button>`).join('')}
+      </div>
+    </div>`;
+  $('#q-main').querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => pick(+b.dataset.score, b)));
+  renderProgress();
+}
+function pick(score, el){
+  answers[Q[idx].id] = score;
+  $('#q-main').querySelectorAll('.opt').forEach(b => b.classList.toggle('sel', b===el));
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    if (idx === Q.length-1){ phase='lead'; renderLead(1); }
+    else { idx++; renderQuestion(1); }
+  }, 300);
+}
+function renderLead(dir){
+  $('#q-main').innerHTML = `
+    <div class="q-card ${dir<0?'back':''}">
+      <div class="eyebrow">Satu langkah terakhir</div>
+      <h2 class="q-text" style="margin:8px 0 6px">Laporan Pra-Diagnosis Anda siap.</h2>
+      <p style="font-size:14.5px;line-height:1.6;color:#33434c;margin:0 0 22px">Lengkapi data berikut agar laporan tersusun atas nama organisasi Anda. Salinannya kami simpan untuk sesi pembahasan bila Anda menjadwalkannya.</p>
+      <form id="lead-form" class="form-grid" autocomplete="on">
+        <div class="fld"><label for="f-name">Nama lengkap</label><input id="f-name" name="name" required placeholder="Budi Santoso" autocomplete="name"></div>
+        <div class="fld"><label for="f-role">Jabatan</label><input id="f-role" name="role" required placeholder="HR Director" autocomplete="organization-title"></div>
+        <div class="fld"><label for="f-email">Email kantor</label><input id="f-email" name="email" type="email" required placeholder="budi@perusahaan.co.id" autocomplete="email"></div>
+        <div class="fld"><label for="f-wa">Nomor WhatsApp</label><input id="f-wa" name="wa" type="tel" inputmode="tel" required placeholder="0812xxxxxxx" autocomplete="tel"></div>
+        <div class="fld full"><label for="f-co">Nama perusahaan</label><input id="f-co" name="company" required placeholder="PT Maju Sejahtera Tbk" autocomplete="organization"></div>
+        <div class="fld"><label for="f-ind">Industri</label>
+          <select id="f-ind" name="industry" required>
+            <option value="" disabled selected>Pilih industri</option>
+            ${['Manufaktur','Energi & Pertambangan','Jasa Keuangan','Logistik & Transportasi','Telekomunikasi & Teknologi','Retail & FMCG','Konstruksi & Properti','Kesehatan','BUMN / Holding','Lainnya'].map(o=>`<option>${o}</option>`).join('')}
+          </select></div>
+        <div class="fld"><label for="f-hc">Jumlah karyawan</label>
+          <select id="f-hc" name="headcount" required>
+            <option value="" disabled selected>Pilih kisaran</option>
+            ${['< 100','100 – 499','500 – 999','1.000 – 4.999','≥ 5.000'].map(o=>`<option>${o}</option>`).join('')}
+          </select></div>
+        <div class="full" style="margin-top:6px">
+          <button class="btn btn-primary" type="submit" style="width:100%">Lihat Laporan Saya
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <div class="form-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Data Anda rahasia dan tidak dibagikan ke pihak lain.</div>
+        </div>
+      </form>
+    </div>`;
+  $('#lead-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    lead = { name:f.name.value.trim(), role:f.role.value.trim(), email:f.email.value.trim(), whatsapp:f.wa.value.trim(),
+             company:f.company.value.trim(), industry:f.industry.value, headcount:f.headcount.value };
+    result = compute();
+    submitLead(lead, result);
+    renderReport();
+    show('report');
+    fitPage();
+  });
+  renderProgress();
+}
+function goBack(){
+  clearTimeout(timer);
+  if (phase==='lead'){ phase='q'; renderQuestion(-1); return; }
+  if (idx>0){ idx--; renderQuestion(-1); }
+}
+
+/* ========= SCORING (mengikuti generateReport() di tool asli) ========= */
+function compute(){
+  let total = 0;
+  const dom = {Input:{s:0,n:0},Proses:{s:0,n:0},Output:{s:0,n:0}};
+  const flags = [];
+  Q.forEach(q => {
+    const sc = answers[q.id] ?? 2;
+    total += sc; dom[q.section].s += sc; dom[q.section].n++;
+    if (sc <= 2) flags.push({id:q.id, section:q.section, area:q.area, score:sc, finding:q.anchors[sc-1], service:q.service});
+  });
+  const avg = Math.round(total/Q.length*10)/10;
+  const davg = {}; IPO_ORDER.forEach(d => davg[d] = Math.round(dom[d].s/dom[d].n*10)/10);
+  // Titik akar: domain paling hulu (Input → Proses → Output) yang di bawah ambang 2.5.
+  // Jika tidak ada yang di bawah ambang, ambil domain dengan skor terendah.
+  let root = IPO_ORDER.find(d => davg[d] < 2.5) || IPO_ORDER.slice().sort((a,b)=>davg[a]-davg[b])[0];
+  const n = flags.length;
+  const systemic = n > 3;
+  const level = avg < 1.75 ? 'Reaktif' : avg < 2.5 ? 'Berkembang' : avg < 3.25 ? 'Terstandar' : 'Terintegrasi';
+  // Urutan temuan: skor terendah dulu, lalu domain paling hulu.
+  flags.sort((a,b) => a.score-b.score || IPO_ORDER.indexOf(a.section)-IPO_ORDER.indexOf(b.section) || a.id-b.id);
+  const svcCount = {};
+  flags.forEach(f => { (svcCount[f.service] ||= []).push(f.area); });
+  const services = Object.entries(svcCount).sort((a,b)=>b[1].length-a[1].length || a[0]-b[0]).map(([k,v])=>({id:+k,name:SERVICES[k],areas:v}));
+  return {answers:{...answers}, totalScore:total, averageMaturity:avg, domainAverages:davg, redFlagCount:n, systemic, root, level, flags, services};
+}
+
+/* ========= REPORT ========= */
+const IMPLICATION = {
+  Input:'Saat Input rapuh, proses sebaik apa pun dijalankan oleh orang yang belum siap atau dengan alat yang kurang. Output ikut turun, dan target terasa tidak realistis.',
+  Proses:'Saat Proses rapuh, target yang jelas tidak punya jalur eksekusi yang konsisten. Hasil kerja bergantung pada individu tertentu dan sulit direplikasi.',
+  Output:'Saat Output rapuh, organisasi bekerja keras tanpa ukuran keberhasilan yang sama. Upaya tersebar, prioritas bergeser, dan evaluasi kinerja jadi subjektif.'
+};
+function verdict(r, co){
+  if (r.redFlagCount === 0) return {
+    h:`Fondasi kinerja ${co} solid di ketiga domain.`,
+    p:`Tidak ada dari 13 dimensi yang masuk zona risiko (skor 1–2). Sistem manajemen kinerja sudah berfungsi. Fokus berikutnya adalah menjaga ritme tata kelola dan memastikan sistem ini siap menopang skala organisasi berikutnya.`};
+  if (r.systemic) return {
+    h:`Kinerja ${co} tertahan di domain ${r.root}, dengan pola yang sistemik.`,
+    p:`${r.redFlagCount} dari 13 dimensi berada di zona risiko dan tersebar lintas domain. Masalahnya saling menyeret: perbaikan di satu titik akan tergerus titik lain bila ditangani terpisah. Verifikasi akar masalah di domain ${r.root} sebelum berinvestasi pada program pelatihan atau perubahan proses berskala besar.`};
+  return {
+    h:`Kinerja ${co} tertahan di ${r.redFlagCount} titik spesifik, terkonsentrasi di domain ${r.root}.`,
+    p:`Sebagian besar sistem manajemen sudah berfungsi. ${r.redFlagCount} dimensi berada di zona risiko (skor 1–2). Kalibrasi terarah pada titik-titik ini memberi dampak lebih cepat dibanding program transformasi menyeluruh, dengan biaya dan gangguan operasional yang jauh lebih kecil.`};
+}
+function calendlyUrl(){
+  const p = new URLSearchParams();
+  if (lead){ p.set('name', lead.name); p.set('email', lead.email); }
+  if (lead && result){
+    p.set('a1', `Pra-Diagnosis ${lead.company} (${lead.industry}, ${lead.headcount} karyawan) · ${lead.role} · Indeks ${result.averageMaturity}/4.0 · ${result.redFlagCount} red flag · Titik akar: ${result.root}`);
+  }
+  return `${CALENDLY_URL}?${p.toString()}`;
+}
+function renderReport(){
+  const r = result, L = lead;
+  const co = esc(L.company);
+  const v = verdict(r, co);
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+  const ref = `PD-${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}-${Math.random().toString(36).slice(2,6).toUpperCase()}`;
+  const complexity = r.redFlagCount===0 ? 'Pemeliharaan' : r.systemic ? 'Transformasi Sistemik' : 'Intervensi Terarah';
+  const complexityD = r.redFlagCount===0 ? 'Jaga ritme tata kelola' : r.systemic ? 'Masalah lintas domain' : 'Masalah terlokalisasi';
+  const showFlags = r.flags.slice(0,5);
+  const more = r.flags.length - showFlags.length;
+  const p1 = r.systemic ? {dur:'4 minggu', kii:'15+ wawancara lintas fungsi', team:'1 Lead Advisor + 2 Senior Analyst'}
+          : r.redFlagCount>0 ? {dur:'2 minggu', kii:'6–8 wawancara terarah', team:'1 Lead Advisor + 1 Senior Analyst'}
+          : {dur:'1–2 minggu', kii:'4–6 wawancara validasi', team:'1 Lead Advisor'};
+  const focus = r.redFlagCount>0 ? `Verifikasi ${r.redFlagCount} temuan di atas, dimulai dari domain ${r.root}, melalui audit dokumen L1–L4, wawancara, dan Gemba walk.` : 'Validasi temuan melalui audit dokumen, wawancara, dan benchmarking terhadap praktik terbaik industri.';
+  const svc = r.services.slice(0,3);
+
+  $('#page').innerHTML = `
+  <div class="page-bar"></div>
+  <div class="pg">
+    <div class="lh">
+      <img class="logo" src="${LOGO}" alt="Performa Consulting">
+      <div class="lh-r"><b>RAHASIA</b><br>Ref. ${ref}</div>
+    </div>
+
+    <div class="ttl">
+      <div>
+        <div class="eyebrow">Laporan Pra-Diagnosis Kinerja Organisasi</div>
+        <h2>${co}</h2>
+        <div class="sub">Disiapkan untuk <b>${esc(L.name)}</b>, ${esc(L.role)}</div><div class="sub">${esc(L.industry)} · ${esc(L.headcount)} karyawan · ${dateStr}</div>
+      </div>
+      <div class="level-badge"><span class="lvl">Level ${r.level}</span><span class="cap">Tingkat kematangan</span></div>
+    </div>
+
+    <div class="sec-h"><span>1</span>Ringkasan Eksekutif</div>
+    <div class="exec">
+      <div class="exec-box">
+        <div class="k">Temuan utama</div>
+        <h3>${v.h}</h3>
+        <p>${v.p}</p>
+        ${r.redFlagCount>0?`<div class="impl"><b>Implikasi —</b> ${IMPLICATION[r.root]}</div>`:''}
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="l">Indeks kematangan</div><div class="v">${r.averageMaturity.toFixed(1)} <small>/ 4.0</small></div><div class="d">Rata-rata 13 dimensi</div></div>
+        <div class="stat"><div class="l">Red flag</div><div class="v ${r.redFlagCount>0?'red':''}">${r.redFlagCount} <small>/ 13</small></div><div class="d">Dimensi dengan skor 1–2</div></div>
+        <div class="stat"><div class="l">Kompleksitas intervensi</div><div class="v" style="font-size:15px;margin-top:4px">${complexity}</div><div class="d">${complexityD}</div></div>
+      </div>
+    </div>
+
+    <div class="sec-h"><span>2</span>Skor per Domain · Model Input–Proses–Output</div>
+    <div class="ipo">
+      ${IPO_ORDER.map(d => {
+        const a = r.domainAverages[d], risk = a < 2.5, isRoot = r.redFlagCount>0 && d===r.root;
+        return `<div class="dom ${risk?'risk':''} ${isRoot?'root':''}">
+          ${isRoot?'<span class="rt">Titik akar</span>':''}
+          <div class="n"><b>${DOM[d].label}</b><em>${a.toFixed(1)}</em></div>
+          <div class="s">${DOM[d].sub}</div>
+          <div class="bar"><i style="width:${a/4*100}%"></i><u></u></div>
+          <div class="st">${risk?'Risiko tinggi / friksi':'Stabil / berfungsi'}</div>
+        </div>`;}).join('')}
+    </div>
+    <div class="ipo-note"><span>Kinerja (Output) = Input + Proses. Masalah di hulu selalu muncul sebagai gejala di hilir.</span><span>│ ambang stabil 2.5</span></div>
+
+    <div class="sec-h"><span>3</span>Temuan Kunci</div>
+    ${showFlags.length ? `
+    <table class="fd">
+      <thead><tr><th>Domain</th><th>Dimensi</th><th>Kondisi saat ini (menurut responden)</th><th style="text-align:center">Skor</th></tr></thead>
+      <tbody>${showFlags.map(f=>`<tr>
+        <td class="dm">${f.section}</td><td class="a">${f.area}</td>
+        <td class="c">${f.finding}</td>
+        <td class="sc"><span class="pill ${f.score===2?'s2':''}">${f.score}/4</span></td></tr>`).join('')}
+      </tbody>
+    </table>
+    <div class="fd-more">${more>0?`+${more} temuan lain dibahas dalam sesi 1-on-1. `:''}Diurutkan dari skor terendah dan domain paling hulu.</div>`
+    : `<div class="nofind">Tidak ada dimensi dengan skor 1–2. Skor terendah organisasi Anda berada di domain ${r.root} (${r.domainAverages[r.root].toFixed(1)}).</div>`}
+
+    <div class="sec-h"><span>4</span>Rekomendasi</div>
+    <div class="rec">
+      <div class="rbox">
+        <h4>Langkah berikutnya: Fase 1 — Diagnosis Mendalam</h4>
+        <p>${focus}</p>
+        <div class="kv"><span>Estimasi durasi</span><b>${p1.dur}</b></div>
+        <div class="kv"><span>Key Informant Interview</span><b>${p1.kii}</b></div>
+        <div class="kv"><span>Deliverable</span><b>Laporan akar masalah + Blueprint Fase 2</b></div>
+      </div>
+      <div class="rbox">
+        <h4>Area intervensi prioritas (Fase 2)</h4>
+        ${svc.length ? `<ol>${svc.map(s=>`<li><div><b>${s.name}</b><small>${s.areas.join(' · ')}</small></div></li>`).join('')}</ol>`
+          : `<p>Belum ada area intervensi mendesak. Pertahankan ritme Executive Business Review dan audit kepatuhan proses secara berkala.</p>`}
+      </div>
+    </div>
+
+    <div class="road">
+      <div class="done"><b>✓ Pra-Diagnosis</b>Skrining 13 dimensi</div>
+      <div class="next"><b>Fase 1 · Diagnosis</b>2–4 minggu</div>
+      <div><b>Fase 2 · Blueprint</b>1–3 bulan</div>
+      <div><b>Fase 3 · Implementasi</b>3–12 bulan</div>
+    </div>
+
+    <div class="cta">
+      <div class="t"><b>Bahas laporan ini 1-on-1 bersama konsultan senior Performa.</b><span>45 menit via Zoom, tanpa biaya. Kita validasi temuan dan sepakati prioritas pertama.</span></div>
+      <a href="${esc(calendlyUrl())}" id="cta-link" target="_blank" rel="noopener">Jadwalkan Sesi →</a>
+    </div>
+  </div>
+  <div class="pfoot">
+    <div><b>Performa Consulting</b> · PT Performa International Indonesia · Jakarta · performa.co.id</div>
+    <div>Berbasis penilaian mandiri responden; divalidasi pada Fase 1.</div>
+  </div>`;
+  $('#cta-link').addEventListener('click', e => { e.preventDefault(); openBooking(); });
+}
+
+/* Skala halaman A4 (794px) agar pas di layar kecil */
+function fitPage(){
+  const wrap = document.querySelector('.page-wrap'), sc = $('#page-scale'), pg = $('#page');
+  if (!wrap || !pg) return;
+  const avail = wrap.clientWidth - 40;
+  const s = Math.min(1, avail / 794);
+  sc.style.transform = s < 1 ? `scale(${s})` : '';
+  sc.style.height = s < 1 ? (pg.offsetHeight * s) + 'px' : '';
+  sc.style.margin = s >= 1 ? '0 auto' : '';
+  sc.style.width = s >= 1 ? '794px' : '';
+}
+window.addEventListener('resize', fitPage);
+
+/* ========= BOOKING ========= */
+function openBooking(){
+  const url = calendlyUrl();
+  if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') window.Calendly.initPopupWidget({url});
+  else window.open(url, '_blank', 'noopener');
+}
+window.addEventListener('message', e => {
+  if (e.origin === 'https://calendly.com' && e.data && e.data.event === 'calendly.event_scheduled') $('#booked').classList.remove('hidden');
+});
+
+/* ========= LEAD SUBMIT ========= */
+async function submitLead(L, r){
+  try{
+    const res = await fetch(SUBMIT_LEAD_URL, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        name: `${L.name} (${L.role})`,
+        whatsapp: L.whatsapp,
+        email: L.email,
+        businessName: `[Performa] ${L.company} · ${L.industry}`,
+        employeeCount: L.headcount,
+        annualRevenue: null,
+        diagnosticResult: {
+          source:'performa-corporate-prediagnosis',
+          role:L.role, industry:L.industry, company:L.company,
+          answers:r.answers, totalScore:r.totalScore, averageMaturity:r.averageMaturity,
+          domainAverages:r.domainAverages, redFlagCount:r.redFlagCount, level:r.level, root:r.root,
+          flaggedQuestions:r.flags,
+          // edge function menampilkan field ini di email notifikasi
+          recommendedModules: r.services.map(s=>s.name)
+        }
+      })
+    });
+    if (!res.ok) console.error('[submitLead]', res.status, await res.text().catch(()=>''));
+  }catch(err){ console.error('[submitLead]', err); }
+}
+
+/* ========= WIRING ========= */
+$('#btn-start').addEventListener('click', () => { idx=0; phase='q'; renderQuestion(1); show('quiz'); });
+$('#btn-back').addEventListener('click', goBack);
+$('#btn-pdf').addEventListener('click', () => {
+  const old = document.title;
+  document.title = `Pra-Diagnosis ${lead ? lead.company : ''} - Performa`;
+  window.print();
+  setTimeout(()=>document.title = old, 500);
+});
+$('#btn-book').addEventListener('click', openBooking);
+$('#btn-restart').addEventListener('click', () => { answers={}; idx=0; phase='q'; lead=null; result=null; $('#booked').classList.add('hidden'); show('landing'); });
+window.addEventListener('beforeprint', () => { const sc=$('#page-scale'); if(sc){sc.dataset.t=sc.style.transform; sc.style.transform='none';} });
+window.addEventListener('afterprint', fitPage);
+</script>
+</body>
+</html>

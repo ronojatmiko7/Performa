@@ -14,6 +14,7 @@
         "Location": "https://insights.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan"
       }
     },
+    { "src": "^/prediagnosis/?$", "dest": "/prediagnosis/index.html" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "status": 404, "dest": "/404.html" }
   ]
