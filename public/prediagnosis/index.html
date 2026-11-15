@@ -292,6 +292,30 @@ const CALENDLY_URL = 'https://calendly.com/performaconsulting/performa-pembahasa
 const SUBMIT_LEAD_URL = 'https://edodmmedehuuemnnmdri.supabase.co/functions/v1/submit-lead';
 const LOGO = 'https://i.ibb.co.com/qMHcWzjh/Logo-Only-performa.png';
 
+/* ========= ATTRIBUTION ========= */
+// Where the visitor came from (UTM tags on the link, else the referring site), kept for the
+// whole visit so it is still known when the lead form is sent. Stored in diagnostic_result.
+const ATTR = (() => {
+  const KEY = 'performa_prediagnosis_attr';
+  try { const saved = sessionStorage.getItem(KEY); if (saved) return JSON.parse(saved); } catch (e) {}
+  const q = new URLSearchParams(location.search);
+  const a = {
+    utm_source: q.get('utm_source') || null,
+    utm_medium: q.get('utm_medium') || null,
+    utm_campaign: q.get('utm_campaign') || null,
+    utm_content: q.get('utm_content') || null,
+    referrer: document.referrer || null,
+    landed_at: new Date().toISOString(),
+  };
+  try { sessionStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {}
+  return a;
+})();
+function sourceLabel(){
+  if (ATTR.utm_source) return [ATTR.utm_source, ATTR.utm_campaign].filter(Boolean).join('/');
+  if (ATTR.referrer) { try { return new URL(ATTR.referrer).hostname; } catch (e) {} }
+  return 'langsung';
+}
+
 /* ========= DATA: 13 dimensi (sumber: organizational_prediagnostic_tool_id.html) ========= */
 const Q = [
  {id:1,section:'Output',area:'Ketersediaan KPI',service:2,
@@ -632,11 +656,12 @@ async function submitLead(L, r){
         name: `${L.name} (${L.role})`,
         whatsapp: L.whatsapp,
         email: L.email,
-        businessName: `[Performa] ${L.company} · ${L.industry}`,
+        businessName: `[Performa · ${sourceLabel()}] ${L.company} · ${L.industry}`,
         employeeCount: L.headcount,
         annualRevenue: null,
         diagnosticResult: {
           source:'performa-corporate-prediagnosis',
+          attribution: ATTR,
           role:L.role, industry:L.industry, company:L.company,
           answers:r.answers, totalScore:r.totalScore, averageMaturity:r.averageMaturity,
           domainAverages:r.domainAverages, redFlagCount:r.redFlagCount, level:r.level, root:r.root,

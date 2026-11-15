@@ -4,18 +4,55 @@
       "src": "^/(?:en/blog/apa-itu-training-need-analysis-tna|public/index\\.php/id/blog/5-kesalahan-fatal-dalam-melakukan-training-need-analysis|index\\.php/jasa-training-need-analysis-tna)/?$",
       "status": 301,
       "headers": {
-        "Location": "https://insights.performa.co.id/insights/training-need-analysis-tna-cara-melakukan-dan-kenapa-survei-saja-tidak-cukup"
+        "Location": "https://www.performa.co.id/insights/training-need-analysis-tna-cara-melakukan-dan-kenapa-survei-saja-tidak-cukup"
       }
     },
     {
       "src": "^/training-and-development/begini-3-langkah-terapkan-standar-operasional-prosedur-sop-di-perusahaan/?$",
       "status": 301,
       "headers": {
-        "Location": "https://insights.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan"
+        "Location": "https://www.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan"
       }
     },
-    { "src": "^/prediagnosis/?$", "dest": "/prediagnosis/index.html" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
+    {
+      "src": "^/insights/?$",
+      "dest": "https://insights.performa.co.id/insights"
+    },
+    {
+      "src": "^/insights/(.+)$",
+      "dest": "https://insights.performa.co.id/insights/$1"
+    },
+    {
+      "src": "^/pelatihan/?$",
+      "dest": "https://insights.performa.co.id/pelatihan"
+    },
+    {
+      "src": "^/pelatihan/(.+)$",
+      "dest": "https://insights.performa.co.id/pelatihan/$1"
+    },
+    {
+      "src": "^/_next/(.+)$",
+      "dest": "https://insights.performa.co.id/_next/$1"
+    },
+    {
+      "src": "^/covers/(.+)$",
+      "dest": "https://insights.performa.co.id/covers/$1"
+    },
+    {
+      "src": "^/sitemap\\.xml$",
+      "dest": "https://insights.performa.co.id/sitemap.xml"
+    },
+    {
+      "src": "^/prediagnosis/?$",
+      "dest": "/prediagnosis/index.html"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
+    }
   ]
 }

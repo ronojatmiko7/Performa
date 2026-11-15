@@ -21,8 +21,8 @@ const brand = {
   accent: '#4cc9f0'
 };
 
-const insightsURL = "https://insights.performa.co.id/insights";
-const catalogURL = "https://insights.performa.co.id/pelatihan";
+const insightsURL = "https://www.performa.co.id/insights";
+const catalogURL = "https://www.performa.co.id/pelatihan";
 const insightsFeedURL = "https://insights.performa.co.id/posts.json";
 
 interface InsightPost {
@@ -44,7 +44,7 @@ const fallbackInsights: InsightPost[] = [
     excerpt: "Kinerja organisasi jarang macet di satu tempat. Ia macet di salah satu dari empat lapisan: strategi, organisasi, proses, atau individu. Ini cara membacanya, berurutan.",
     date: "2026-10-03",
     tag: "Diagnosis Kinerja",
-    url: "https://insights.performa.co.id/insights/diagnosis-kinerja-organisasi",
+    url: "https://www.performa.co.id/insights/diagnosis-kinerja-organisasi",
   },
   {
     slug: "sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan",
@@ -52,7 +52,7 @@ const fallbackInsights: InsightPost[] = [
     excerpt: "SOP adalah prosedur tertulis agar pekerjaan yang sama menghasilkan hasil yang sama, siapa pun yang mengerjakannya. Ini isinya, cara membuatnya, contohnya, dan kenapa banyak SOP berhenti di laci.",
     date: "2026-10-03",
     tag: "SOP",
-    url: "https://insights.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan",
+    url: "https://www.performa.co.id/insights/sop-adalah-pengertian-cara-membuat-dan-kenapa-tidak-dijalankan",
   },
   {
     slug: "kenapa-kpi-tidak-tercapai-dan-ini-bukan-salah-karyawan-anda",
@@ -60,7 +60,7 @@ const fallbackInsights: InsightPost[] = [
     excerpt: "Ketika KPI tidak tercapai, kebanyakan perusahaan mengganti orangnya, bukan sistemnya. Ini tiga akar masalah KPI yang paling sering diabaikan.",
     date: "2026-06-09",
     tag: "KPI",
-    url: "https://insights.performa.co.id/insights/kenapa-kpi-tidak-tercapai-dan-ini-bukan-salah-karyawan-anda",
+    url: "https://www.performa.co.id/insights/kenapa-kpi-tidak-tercapai-dan-ini-bukan-salah-karyawan-anda",
   },
 ];
 
